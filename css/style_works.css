@@ -1,0 +1,54 @@
+hr{
+    width: 20%;
+    height: 20%;
+}
+
+.container{
+    display: flex;        
+    justify-content: center
+}
+
+.image{
+    flex-basis: 10%;
+    border-radius: 20px;
+    float: left;
+    
+}
+
+.text{
+    width:700px;
+    padding-left: 20px;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: white;
+    font-family: cursive;
+}
+
+.rounded-image{
+    border-radius: 20px;
+}
+
+.button-indent {
+    padding: auto;
+    margin-left: -410px;    
+    /* padding-left: 100px; */
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+    float: left;
+    width: 33%;
+    /* padding: 5px; */
+  }
+  
+  /* Clear floats after image containers */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
