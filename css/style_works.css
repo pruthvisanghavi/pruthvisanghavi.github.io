@@ -8,12 +8,12 @@ hr{
     justify-content: center
 }
 
-.image{
+/* .image{
     flex-basis: 10%;
     border-radius: 20px;
     float: left;
     
-}
+} */
 
 .text{
     width:700px;
