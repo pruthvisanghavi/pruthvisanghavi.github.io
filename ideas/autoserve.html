@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <html>
+  
+  <head>
+    <title>Pruthvi Sanghavi</title>
+    <link rel="icon" type="image/png" href="assets/profile_pic.jpg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+<!-- ************************************************  SCRIPTS  ******************************************** -->
+  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      extensions: ["tex2jax.js"],
+      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+      tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+      TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
+      messageStyle: "none"
+    });
+    </script>    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<!-- ************************************************************************************************************** -->
+<!-- ************************************************  FONTS  ******************************************* -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime&display=swap" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime:wght@300&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<!-- ***************************************************************************************************** -->
+  <center>
+    <h1 style="color:black; font-family: Courier Prime; font-size:35px">AutoServe</h1>
+  </center>
+
+  <style> 
+  p
+  {
+      width:900px; 
+      word-wrap:break-word;
+  }
+  </style>
+    
+  <style>
+  hr{
+    
+     width: 900px;
+  }
+</style>
+    
+<body style="background-color:rgb(230, 230, 230);">
+<section id="menu">
+  <center>
+    <button style="color:white"><a href="../index.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Home </a></button>
+    <button style="color:white"><a href="../works.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Works </a></button>
+    <button style="color:white"><a href="../ideas.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Tinkerings </a></button>
+
+  </center>
+  </section>
+  
+  <section id="body">
+    <center>
+        <p></p>
+        <a href=""><img src="../assets/auto_serve_intro.png" style="border:1px solid black; height:70%; width: 37.5%;"/></a>
+        <p align="left" style="color:black; font-family: Courier Prime;"></br><br>
+        <strong>Autoserve is a solution to the problem many restaurants around the world face and that is to maintain a huge workforce.</strong> It consists of a series of large wheel operated conveyor systems to transport the food orders from the kitchen to the right table and the empty dishes from the table to the kitchen wash areas.
+        A user interface at each table helps the customers order food from the available menus of food. Once the customer orders the food. A ticket gets generated which is stacked in the chef’s user interface. The ticket is tagged with the table number. As the chef completes the order he registers it on the user interface 
+        screen and the customers also get appropriate notification. As the chef finishes making the order and transfers the ticket from the in progress to completed tab and places the food order on the conveyor a weight sensor on the kitchen end of the conveyor system indicates that there is food on the belt and based on it the food is delivered on the right table.
+        </p>
+        <a href=""><img src="../assets/auto_serve.png" style="border:1px solid black; height:70%; width: 37.5%;"/></a>
+        <p align="left" style="color:black; font-family: Courier Prime;"></br><br>
+        The conveyor system consists of wheels which are rotated by the motors and sensors on the side of the track to register the presence of food. Based on the table number the food is allotted to. A motion planning algorithm determines which wheels are required to be rotated and to what degree. The sensors keep an eye on the order and help in freeing the other wheels of the conveyor system so that food can be delivered to other tables.
+        Shown in the figure on the left is a limited top view birds eye view of the autoserve system.
+        </br></br>
+        The other area of the system with the order kiosk can be used for the take away orders. A customer can order food from the ui interface and choose a take away option. A packed food order comes directly to the point at which she is standing using the same ordering and ticket allotment framework presented above. Take away food orders require packaging of the food orders. The automation mechanism for which can be created.
+        Multiple conveyors coming out of the same kitchen are also possible to fulfil the demands of the orders. The tables are made such that each table also has a conveyor system so that the customers do not have to move the food much. A circular conveyor for each table can also be designed so that the customers can transport the food from one person to the other person with ease.
+        </br></br>
+        <strong>Skeptical Areas : </strong>
+        Conveyor should move multiple food orders. A single food order should not block the entire transport system.
+        Empty plates should be transported through another conveyor directly to the washing area.
+        The number of actuators for the transportation of the orders seems to be very high. This might increase the frequency of the problems on a day to day basis.
+        A customer would not like to place the empty plates somewhere after eating. So a return mechanism should also be created.
+        Tables will get dirty after the completion of every order. Since the restaurant is entirely robotic. There needs to be some mechanism which auto cleans the table after the customer leaves.
+        </br></br>
+        <strong>Areas of Improvements :</strong>
+        Using computer vision to monitor the entire system (This increases the complexity but makes the system much more efficient)(I don't know where CV can be used).
+        Lighting system in the conveyors and glasses surrounding them would create a great ambience.
+        A mobile robot work force can also accompany this system but that increases the work force problem because the robots are not fully autonomous.
+        Additional scope of making automated food maker robots and adding them to the kitchen can help increase the automation rate of the restaurant and thereby solve more workforce problems.
+        </br></br>
+        <strong>Goals :</strong>
+        The customer should enjoy the ambience and should love to view the entire robotic play in action.
+
+        </br></br>
+        <strong>Why will this not work? :</strong>
+        
+        There are a lot of such restaurants.
+        Personal hate of the population against robots.
+        </p>
+        <a href=""><img src="../assets/auto_serve_logic.png" style="border:1px solid black; height:70%; width: 37.5%;"/></a>
+
+
+    </center>
+   </section>
+    
+   <section id ="references">
+     <center>
+
+     </center>
+   </section>
+<hr>
+</body>
+ </html>
