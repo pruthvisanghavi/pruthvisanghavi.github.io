@@ -49,41 +49,42 @@
                 <a href=""><img src="../assets/auto_serve_intro.png" style="border:1px solid black; height:70%; width: 100%;" class="rounded-image"/></a>
                 </div>
                 <p align="left" style="color:black; font-family: Courier Prime; font-size:16px;"></br><br>
-                <strong>Autoserve is a solution to the problem many restaurants around the world face and that is to maintain a huge workforce.</strong> It consists of a series of large wheel operated conveyor systems to transport the food orders from the kitchen to the right table and the empty dishes from the table to the kitchen wash areas.
-                A user interface at each table helps the customers order food from the available menus of food. Once the customer orders the food. A ticket gets generated which is stacked in the chef’s user interface. The ticket is tagged with the table number. As the chef completes the order he registers it on the user interface 
-                screen and the customers also get appropriate notification. As the chef finishes making the order and transfers the ticket from the in progress to completed tab and places the food order on the conveyor a weight sensor on the kitchen end of the conveyor system indicates that there is food on the belt and based on it the food is delivered on the right table.
+                <strong>Autoserve is designed to address a common challenge faced by restaurants worldwide: the need to maintain a large workforce.</strong> 
+                The system features a series of wheel-operated conveyor mechanisms that transport food orders from the kitchen to the designated tables and return empty dishes from the tables to the kitchen's washing area.
+                Each table is equipped with a user interface that allows customers to browse the menu and place orders. Once an order is placed, a ticket is generated and sent to the chef’s interface, tagged with the corresponding table number. As the chef prepares the order, its status is updated on the interface, and customers receive real-time notifications. 
+                Upon completion, the chef moves the order ticket to the “completed” section, places the food on the conveyor, and a weight sensor at the kitchen end detects the presence of the order, initiating delivery to the correct table.
+                </br>
+                </br>The conveyor system operates via motor-driven wheels, with sensors along the track to detect the presence of food items. A motion planning algorithm calculates which wheels need to rotate and to what degree, depending on the destination table number. Sensors continuously monitor the system, allowing free movement for other orders without unnecessary blockage.
                 </p>
                 <div>
                 <a href=""><img src="../assets/auto_serve.png" style="border:1px solid black; height:70%; width: 100%;" class="rounded-image"/></a>
                 </div>
                 <p align="left" style="color:black; font-family: Courier Prime; font-size:16px;"></br><br>
-                The conveyor system consists of wheels which are rotated by the motors and sensors on the side of the track to register the presence of food. Based on the table number the food is allotted to. A motion planning algorithm determines which wheels are required to be rotated and to what degree. The sensors keep an eye on the order and help in freeing the other wheels of the conveyor system so that food can be delivered to other tables.
-                Shown in the figure on the left is a limited top view birds eye view of the autoserve system.
+                The figure shown above provides a limited top-down (bird’s eye) view of the Autoserve system.
                 </br></br>
-                The other area of the system with the order kiosk can be used for the take away orders. A customer can order food from the ui interface and choose a take away option. A packed food order comes directly to the point at which she is standing using the same ordering and ticket allotment framework presented above. Take away food orders require packaging of the food orders. The automation mechanism for which can be created.
-                Multiple conveyors coming out of the same kitchen are also possible to fulfil the demands of the orders. The tables are made such that each table also has a conveyor system so that the customers do not have to move the food much. A circular conveyor for each table can also be designed so that the customers can transport the food from one person to the other person with ease.
+                An additional area with a dedicated order kiosk supports takeaway services. Customers can place takeaway orders via the UI, and packaged meals are delivered directly to the customer’s location using the same ordering and ticketing system. An automated mechanism can be developed for food packaging to support this process.    
+                Multiple conveyors can extend from the same kitchen to handle high order volumes efficiently. Tables are designed with integrated conveyor systems to minimize customer effort in retrieving food. Additionally, circular conveyors could be implemented at each table, allowing customers to easily pass dishes around.        
                 </br></br>
                 <strong>Skeptical Areas : </strong>
-                Conveyor should move multiple food orders. A single food order should not block the entire transport system.
-                Empty plates should be transported through another conveyor directly to the washing area.
-                The number of actuators for the transportation of the orders seems to be very high. This might increase the frequency of the problems on a day to day basis.
-                A customer would not like to place the empty plates somewhere after eating. So a return mechanism should also be created.
-                Tables will get dirty after the completion of every order. Since the restaurant is entirely robotic. There needs to be some mechanism which auto cleans the table after the customer leaves.
+                </br>- The conveyor system must accommodate multiple food orders without allowing a single order to block the entire transport network.
+                </br>- Empty plates should be automatically returned to the washing area via a separate conveyor system.
+                </br>- The high number of actuators required for operation may increase the risk of frequent mechanical failures.
+                </br>- A user-friendly return mechanism for empty plates needs to be developed to enhance customer experience.
+                </br>- Automated table cleaning systems are essential, as customers may leave tables dirty after meals in a fully robotic restaurant.
                 </br></br>
                 <strong>Areas of Improvements :</strong>
-                Using computer vision to monitor the entire system (This increases the complexity but makes the system much more efficient)(I don't know where CV can be used).
-                Lighting system in the conveyors and glasses surrounding them would create a great ambience.
-                A mobile robot work force can also accompany this system but that increases the work force problem because the robots are not fully autonomous.
-                Additional scope of making automated food maker robots and adding them to the kitchen can help increase the automation rate of the restaurant and thereby solve more workforce problems.
-                </br></br>
+               </br>- Incorporating computer vision for system monitoring could significantly boost efficiency, although it would increase system complexity.
+                </br>- Adding lighting systems within the conveyors and transparent glass enclosures would enhance the restaurant’s ambience.
+                </br>- A mobile robotic workforce could be introduced for additional support, though this would reintroduce workforce management challenges due to limited robot autonomy.
+                </br>- Developing automated food preparation robots would further increase the automation rate, reducing dependence on human labor.                    
+            </br></br>
                 <strong>Goals :</strong>
-                The customer should enjoy the ambience and should love to view the entire robotic play in action.
-
-                </br></br>
-                <strong>Why will this not work? :</strong>
+                </br>- The system aims to create a memorable dining experience where customers can enjoy the ambience and watch the impressive, fully automated process in action.
                 
-                There are a lot of such restaurants.
-                Personal hate of the population against robots.
+                </br></br>
+                <strong>Potential Challenges :</strong>
+                    <br>- Similar robotic restaurant concepts already exist, reducing the novelty factor.
+                    <br>- Public resistance toward robotic systems in customer-facing environments could affect adoption.
                 </p>
                 <div>
                 <a href=""><img src="../assets/auto_serve_logic.png" style="border:1px solid black; height:70%; width: 100%;" class="rounded-image"/></a>
