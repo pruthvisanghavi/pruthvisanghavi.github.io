@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <html>
+  
+  <head>
+    <title>Pruthvi Sanghavi</title>
+    <link rel="icon" type="image/png" href="images/logo.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+<!-- ************************************************  SCRIPTS  ******************************************** -->
+  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      extensions: ["tex2jax.js"],
+      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+      tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+      TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
+      messageStyle: "none"
+    });
+    </script>    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<!-- ************************************************************************************************************** -->
+<!-- ************************************************  FONTS  ******************************************* -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<!-- ***************************************************************************************************** -->
+  <center>
+    <h1 style="color:black; font-family: Courier Prime; font-size:30px">Venus Rover Obstacle Avoidance System (VROAS)</h1>
+  </center>
+
+  <style> 
+  p
+  {
+      width:900px; 
+      word-wrap:break-word;
+  }
+  </style>
+    
+  <style>
+  hr{
+    
+     width: 900px;
+  }
+</style>
+    
+    
+<section id="menu">
+  <center>
+    <button style="color:white"><a href="index.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Home </a></button>
+    <button style="color:white"><a href="works.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Works </a></button>
+  </center>
+  </section>
+  <body style="background-color:rgb(230, 230, 230);">
+
+  <section id="body">
+    <center>
+      <p></br></p>
+      <!-- Add your VROAS images here -->
+      <a href=""><img src="assets/vroas_jpl.png" style="border:1px solid black; height:200px;"/></a>
+      <a href=""><img src="assets/vroas_jpl_1.png" style="border:1px solid black; height:200px;"/></a>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Challenge Overview:</b></br>Imagine a world hot enough to turn lead into a puddle, where the atmospheric pressure can crush a nuclear-powered submarine. Now imagine sending a rover to explore that world. Venus, ancient sister of Earth with a planetary environment just this side of hellish, has been visited by a handful of probes since the early days of space flight. Of the many missions to our celestial neighbor, only about a dozen have made contact with the surface of the planet. The longest-lived landers only managed to function for a couple of hours before succumbing to the relentlessly oppressive heat and pressure.</p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;">Despite the punishing conditions, previous missions to Venus have nevertheless delivered important information, such as:</p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;">
+      → Surface temperature: in excess of 450°C</br>
+      → Surface pressure: 92 times that of Earth</br>
+      → Wind speeds: 0.3 – 1.3 meters per second; Due to the extreme pressure, this low wind speed feels almost like gale-force winds here on Earth</br>
+      → Length of Venusian day: 116 Earth days
+      </p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;">NASA's Jet Propulsion Laboratory (JPL), under a grant from the NASA Innovative Advanced Concepts (NIAC) program, is studying a mission concept to return to the surface of Venus, known as the Automaton Rover for Extreme Environments (AREE), something not accomplished since the Soviet Vega 2 landed in 1985. Current, state-of-the-art, military-grade electronics fail at approximately 125°C, so mission scientists at JPL have taken their design cues from a different source: automatons and clockwork operations.</p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;">Powered by wind, the AREE mission concept is intended to spend months, not minutes, exploring the landscape of our sister world. Built of advanced alloys, AREE will be able to collect valuable long-term longitudinal scientific data utilizing both indirect and direct sensors. As the rover explores the surface of Venus, collecting and relaying data to an orbiter overhead, it must also detect obstacles in its path like rocks, crevices, and steep terrain.</p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;">To assist AREE on its groundbreaking mission concept, JPL needs an equally groundbreaking obstacle avoidance sensor, one that does not rely on vulnerable electronic systems. For that reason, JPL is turning to the global community of innovators and inventors to design this novel avoidance sensor for AREE. This sensor will be the primary mechanism by which the potential rover would detect and navigates through dangerous situations during its operational life.</p>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Project Overview:</b></br>VR-OAS is an obstacle avoidance system for the Venusian rover. It detects obstacles and actuates links to generate a relevant response. The proposed design is fully mechanical and can be divided into two modules: the Obstacle Avoidance Module and the Hole/Valley/Slope Detection Module.</p>
+
+      <!-- Add schematic image here -->
+      <a href=""><img src="assets/vroas_1.png" style="border:0.1px solid black; height:800px;"/></a>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Obstacle Avoidance Module:</b></br></p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Construction:</b></p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;">
+      → The obstacle avoidance module consists of three push rods or pins.</br>
+      → Out of the three pins, two pins (Pl and Pr) are used for the detection of the obstacle to the left and the right of the rover respectively. The third pin (Pc) which is mounted on the center is extended slightly forward in comparison to the two pins and is used when the obstacle obstructs the path of the rover from the center.</br>
+      → The other ends of the pins Pl and Pr are connected with cranks and connecting rods of the toggle mechanism. The connecting rods at the end are connected to racks (Rl and Rr).</br>
+      → The racks R1 and R2 are in mesh with the gears G1 and G2.</br>
+      → These gears are in mesh with a compound gear system Ga and Gb which in turn are in mesh with the main rack R.</br>
+      → The ends of this rack are mounted with bell crank levers (L1 and L2) the other joints of which are connected with the wheels of the rover.</br>
+      → Pin Pc is mounted with some eccentricity on the gear Ge which is in mesh with the rack R.
+      </p>
+
+      <!-- Add mechanism image here -->
+      <a href=""><img src="assets/vroas_concept_turning.png" style="border:1px solid black; height:300px;"/></a>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Working:</b></p>
+      
+      <p align="justify" style="color:black; font-family: Courier Prime;">
+      → When the path of the rover is obstructed from the right, the right pin Pr gets pressed. This push on the pin actuates the toggle mechanism which in turn moves the rack Rr horizontally. Thus making the gears to rotate. The rotation of the gear would move the rack R and thus this would help the wheel to steer because of the moment of the bell crank lever.</br></br>
+      → Similar event happens when the path of the rover is obstructed from the left and the left link is pressed.</br></br>
+      → When the path of the rover is obstructed from the center, the extended pin Pc gets pressed. This pin Pc rotates the gear Ge and thus the rack R which is in mesh with the gear Ge moves. The motion of the rack helps to steer the wheel.</br></br>
+      → Now as the obstacle is detected, the rover would move in the reverse direction and the mechanism would help the vehicle to turn. This will generate a combined reverse + turning motion bringing the vehicle away from the obstacles and finding new path forward.
+      </p>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Hole/Valley/Slope Detection Module:</b></br></p>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Mechanism for the detection of Holes/Valleys:</b></p>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;">
+      → In order to detect holes and valleys having depths greater than 0.35 meters we are proposing a simple suspended pendulum mechanism. This mechanism consists of an elastic thread at the end of which a pendulum is mounted. The length of the thread is slightly more than 0.35 meters.</br></br>
+      → As a result when the rover moves ahead the pendulum bob would just freely slide with the ground keeping the thread loose. When the hole or valley having a depth more than 0.35 meters is encountered the pendulum would itself move down and the string would get tensed.</br></br>
+      → The other end of the thread is connected with the link which triggers an indication link on the rover.
+      </p>
+
+      <!-- Add pendulum mechanism image here -->
+      <a href=""><img src="assets/vroas_concept_valley.png" style="border:1px solid black; height:300px;"/></a>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Mechanism for the detection of slope greater than 30 degrees:</b></p>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;">
+      → In order to indicate the slope greater than thirty degrees a pendulum is used. The pendulum is freely suspended, so when the rover moves uphill or downhill on the slope, the chassis of the rover becomes parallel to the slope and so the rod of the pendulum has a relative motion with respect to the chassis and as a result angle of the slope can be indicated.</br></br>
+      → When the slope is thirty degrees or more a link gets pressed, triggering the appropriate response from the rover's navigation system.
+      </p>
+
+      <!-- Add slope detection image here -->
+      <a href=""><img src="assets/vroas_concept_slope.png" style="border:1px solid black; height:350px;"/></a>
+
+      <p align="justify" style="color:black; font-family: Courier Prime;"><b>Significance:</b></br>While the mission to the surface of Venus may be years off, the development of a suitably robust rover sensor will strengthen the case for returning to Venus with a rover, something that has never been attempted before. JPL has issued this challenge to the global community because the rover must have the ability to successfully navigate in such a demanding environment in order to qualify for additional developmental funding.</p>
+
+    </center>
+   </section>
+    
+   <section id ="references">
+     <center>
+
+     </center>
+   </section>
+<hr>
+</body>
+ </html>

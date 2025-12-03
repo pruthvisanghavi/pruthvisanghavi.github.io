@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <html>
+  
+  <head>
+    <title>Pruthvi Sanghavi - Visual Odometry</title>
+    <link rel="icon" type="image/png" href="images/logo.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+<!-- ************************************************  SCRIPTS  ******************************************** -->
+  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      extensions: ["tex2jax.js"],
+      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+      tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+      TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
+      messageStyle: "none"
+    });
+  </script>    
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+<!-- ************************************************************************************************************** -->
+
+<!-- ************************************************  FONTS  ******************************************* -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<!-- ***************************************************************************************************** -->
+
+  <center>
+    <h1 style="color:black; font-family: Courier Prime; font-size:30px">Visual Odometry</h1>
+  </center>
+
+  <style> 
+  p {
+      width:900px; 
+      word-wrap:break-word;
+  }
+  
+  .figure {
+      margin: 20px 0;
+  }
+  
+  .figure-caption {
+      font-style: italic;
+      font-size: 14px;
+      margin-top: 5px;
+  }
+  
+  h3 {
+      color: black;
+      font-family: Courier Prime;
+      font-size: 22px;
+      margin-top: 30px;
+  }
+  
+  h4 {
+      color: black;
+      font-family: Courier Prime;
+      font-size: 18px;
+      margin-top: 20px;
+  }
+  </style>
+    
+  <style>
+  hr {
+     width: 900px;
+  }
+  </style>
+    
+<section id="menu">
+  <center>
+    <button style="color:white"><a href="index.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Home </a></button>
+    <button style="color:white"><a href="works.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Works </a></button>
+  </center>
+</section>
+
+<body style="background-color:rgb(230, 230, 230);">
+
+<section id="body">
+  <center>
+    <p></br></p>
+
+    <h3>1. Introduction</h3>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Visual Odometry is a crucial concept in Robotics Perception for estimating the trajectory of the robot (the camera on the robot to be precise). The concepts involved in Visual Odometry are quite the same for SLAM which needless to say is an integral part of Perception. In this project we are given frames of a driving sequence taken by a camera in a car, and the scripts to extract the intrinsic parameters.
+    </p>
+
+    <h3>2. Data Preparation</h3>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    <b>1. Bayer Format Conversion:</b><br/>
+    The first step in the project was the preparation of the given dataset and reading all the images in the dataset. The input images are in Bayer format on which demosaicing function with GBRG alignment was used. Thus, the Bayer pattern encoded image img was converted to a color image using the opencv function:<br/><br/>
+    <code>color_image = cv2.cvtColor(img, cv2.COLOR_BayerGR2BGR)</code>
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    <b>2. Camera Parameter Extraction:</b><br/>
+    The next step in the data preparation phase was to extract the camera parameters using ReadCameraModel.py as follows:<br/><br/>
+    <code>fx, fy, cx, cy, G_camera_image, LUT = ReadCameraModel('./model')</code>
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    <b>3. Image Undistortion:</b><br/>
+    The images in the given dataset were further Undistorted using the current frame and next frame using UndistortImage.py:<br/><br/>
+    <code>undistorted_image = UndistortImage(originalimage, LUT)</code>
+    </p>
+
+    <h3>3. The Basic Pipeline</h3>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    To estimate the 3D motion (translation and rotation) between successive frames in the sequence, the following steps were followed.
+    </p>
+
+    <h4>3.1 Finding Point Correspondences</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    There are a number of algorithms available to find the keypoints and the descriptors of the two images. The algorithms generally used are:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    → <b>ORB</b> (Oriented fast and Rotated Brief)<br/>
+    → <b>SIFT</b> (Scale Invariant Feature Transform)<br/>
+    → <b>SURF</b> (Speeded up Global Features)
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    For the current project we tried the ORB and the SIFT Algorithms. SIFT algorithm uses the sift.detect() function to find the keypoints in the images. ORB is computationally faster and has a good matching performance as compared to SIFT and SURF algorithms. These algorithms provide with the key points in both the images. Once the keypoints and descriptor objects are obtained, a matcher is used to find the points which match in the two images for that we have used the Brute force keypoint matcher that uses orb descriptors.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Once the matching points were obtained they were accessed. The result of <code>matches = bf.match(des1, des2)</code> line is a list of DMatch objects. This DMatch object has following attributes:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    → <b>DMatch.distance</b> - Distance between descriptors. The lower, the better it is.<br/>
+    → <b>DMatch.trainIdx</b> - Index of the descriptor in train descriptors<br/>
+    → <b>DMatch.queryIdx</b> - Index of the descriptor in query descriptors<br/>
+    → <b>DMatch.imgIdx</b> - Index of the train image.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Thus, the matching points are obtained which we stored in the list to access it for later use.
+    </p>
+
+    <h4>3.2 Estimating the Fundamental Matrix using Eight-Point Algorithm within RANSAC</h4>
+
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The fundamental matrix (F) is a 3x3 matrix that relates the matching point between the two images taken from different views. The concept of <b>epipolar geometry</b> (The epipolar geometry is the intrinsic projective geometry between two views) is used to derive the fundamental matrix.
+    </p>
+    <a href=""><img src="assets/visual_odometry_4.png" style="border:1px solid black; height:700px;"/></a>
+
+    <div class="figure">
+      <p align="justify" style="color:black; font-family: Courier Prime; font-size: 14px; font-style: italic;">
+      Figure: Concept of Epipolar Geometry
+      </p>
+    </div>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    When a point X is viewed from two different angles in 3d, the same point appears as two different points x and x' and they are the corresponding point. Key concepts:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    → <b>Epipole</b> is the point of intersection of the line joining the camera centers with the image plane.<br/>
+    → <b>Epipolar plane</b> is the plane containing the baseline.<br/>
+    → <b>Epipolar line</b> is the intersection of an epipolar plane with the image plane. All the epipolar lines intersect at the epipole.
+    </p>
+
+    <h4>Fundamental Matrix</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The F matrix is the algebraic representation of the epipolar geometry. For the points in the two images $x_i$ and $x'_i$, the fundamental matrix satisfies the epipolar constraint:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$x'^T_i F x_i = 0$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The above condition is known as the <b>epipolar constraint</b> or the <b>correspondence condition</b>. Thus, a homogeneous transform can be setup to get the 9 values of the fundamental matrix:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$x_i x'_i f_{11} + x_i y'_i f_{21} + x_i f_{31} + y_i x'_i f_{12} + y_i y'_i f_{22} + y_i f_{32} + x'_i f_{13} + y'_i f_{23} + f_{33} = 0$$
+    </p>
+
+    <h4>Eight Point Algorithm</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    In F matrix estimation, each point only contributes one constraint as the epipolar constraint is a scalar equation. Thus, we require at least 8 points to solve the above homogenous system. That is why it is known as Eight-point algorithm.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The above homogeneous equation which is of the form $Ax = 0$ can be solved using Singular Value Decomposition. Thus, on applying SVD the decomposition of the matrix $A = USV^T$ can be obtained, here U and V are the orthonormal matrices and S is the diagonal matrix containing the singular values.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    If F has a full rank then it will have an empty null-space i.e. it won't have any point that is on entire set of lines. Thus, there wouldn't be any epipoles.
+    </p>
+
+    <h4>RANSAC for Fundamental Matrix Estimation</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The algorithms such as SIFT and ORB are noisy. Some of the matching points are incorrect which are called the outliers. Thus, in order to get better results, we need to perform outlier rejection. Various algorithms are available for the rejection of outliers such as least squaring, RANSAC etc. Here we have used RANSAC algorithm to find the inliers and get the best fundamental matrix.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    <b>RANSAC Algorithm:</b><br/>
+    → Initialize: n = 0<br/>
+    → For i = 1:M iterations do:<br/>
+    &nbsp;&nbsp;&nbsp;→ Choose 8 correspondences randomly<br/>
+    &nbsp;&nbsp;&nbsp;→ Estimate Fundamental Matrix F<br/>
+    &nbsp;&nbsp;&nbsp;→ Initialize S = ∅<br/>
+    &nbsp;&nbsp;&nbsp;→ For j = 1:N correspondences do:<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ If |x'^T_j F x_j| < ε then S = S ∪ {j}<br/>
+    &nbsp;&nbsp;&nbsp;→ If n < |S| then:<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ n = |S|<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ S_m = S<br/>
+    → Return best S_m
+    </p>
+
+    <h4>3.3 Estimation of Essential Matrix from the Fundamental Matrix</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The essential matrix is used to determine the relative camera poses between image frames. The essential matrix has 5 degrees of freedom and in this case it is computed from the fundamental matrix and the camera calibration matrix.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The Essential matrix E is expressed as:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$E = K^T F K$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Where, K is the camera calibration matrix and F is the Fundamental matrix.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Next, the rotation and translations have to be calculated from the essential matrix. However, the E matrix should be constrained to have a rank 2. This is achieved through singular value decomposition in the following way, E can be expressed as:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$E = USV^T = U \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix} V^T$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    By constraining the value of the diagonal matrix and setting the last value of the diagonal to 0, this will constraint the rank of the Essential matrix E to 2. This in turn will provide the corrected Essential matrix that can be used to determine the camera poses.
+    </p>
+
+    <h4>3.4 Camera Pose Computation from the Essential Matrix</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Camera pose consists of Rotation and translation of the camera with respect to the world frame. The camera pose has 6 degrees of freedom, both the rotation and the translation have 3 degrees of freedom (R-(Roll, Pitch, Yaw) and T-(X, Y, Z)).
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The camera configurations can be obtained from the Essential Matrix E. Four possible camera configurations can be obtained from the essential matrix E, which are expressed as: $(C_1, R_1)$, $(C_2, R_2)$, $(C_3, R_3)$, $(C_4, R_4)$.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Here, C is the camera center and R is the Rotation matrix. These are calculated by decomposing E matrix through SVD ($E = UDV^T$) and using the W matrix instead of the diagonal matrix D.
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$W = \begin{bmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The solution for the Translation is obtained from the last column of the U matrix. The configurations of the camera pose can be expressed as:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$1. \; C_1 = U(:, 3) \text{ and } R_1 = UWV^T$$
+      $$2. \; C_2 = -U(:, 3) \text{ and } R_2 = UWV^T$$
+      $$3. \; C_3 = U(:, 3) \text{ and } R_3 = UW^TV^T$$
+      $$4. \; C_4 = -U(:, 3) \text{ and } R_4 = UW^TV^T$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    In addition, the determinant $\det(R) = 1$. If $\det(R) = -1$, the camera pose must be corrected i.e. $C = -C$ and $R = -R$, this is done to reduce error. Finally, the camera pose P is calculated using the following equations:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$P = KR[I_{3×3} - C]$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The next step would be to determine and select the best camera pose from the 4 different camera poses computed.
+    </p>
+
+    <h4>3.5 Linear Triangulation</h4>
+    <a href=""><img src="assets/visual_odometry_3.png" style="border:1px solid black; height:700px;"/></a>
+
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Linear triangulation is used to determine the correct camera pose, this is achieved by checking for the <b>Cheirality Condition</b>. Which basically means that the points are in front of both the cameras. This is done using linear least squares method to check for depth positivity Z of the points with respect to the camera center. A 3D point X is in front of the camera if the following condition is met: $r_3(X - C) > 0$ where $r_3$ is the third row of the rotation matrix (z-axis of the camera). Since not all points satisfy this condition, this can be used to determine the correct pose.
+    </p>
+
+    <h4>3.6 Non-linear Triangulation</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    For two camera poses, the linearly triangulated points X, the locations of the 3D points are refined to minimize reprojection error which is computed by measuring the error between measurement and projected 3D point:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$\min_X \sum_{j=1,2} \left( \left(u^j - \frac{P_1^{jT}\bar{X}}{P_3^{jT}\bar{X}}\right)^2 + \left(v^j - \frac{P_2^{jT}\bar{X}}{P_3^{jT}\bar{X}}\right)^2 \right)$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    $\bar{X}$ is the homogeneous representation of X and $P^T_i$ is each row of camera projection matrix P. The minimization is highly nonlinear due to the divisions.
+    </p>
+
+    <h4>3.7 Non-linear PnP</h4>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The linear PnP minimizes algebraic error. In non-linear perspective-n-points, the camera pose is refined to minimize the reprojection error between the measurement and the projected 3D point by enforcing orthogonality of the rotation matrix $R = R(q)$:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+      $$\min_{C,q} \sum_{i=1,J} \left( \left(u^i - \frac{P_1^{iT}\bar{X}_j}{P_3^{iT}\bar{X}_j}\right)^2 + \left(v^i - \frac{P_2^{iT}\bar{X}_j}{P_3^{iT}\bar{X}_j}\right)^2 \right)$$
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    We compute P such that $P = KR[I_{3×3} - C]$, $\bar{X}$ is the homogeneous representation of X and q is the 4 dimensional quaternion. The minimization is highly non-linear owing to the divisions and quaternion parameterization.
+    </p>
+
+    <h3>4. Operation with Inbuilt Functions</h3>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Using the built-in functions cv2.findEssentialMat and cv2.recoverPose from OpenCV, trajectory estimation was also performed for comparison.
+    </p>
+    
+    <div class="figure">
+      <!-- Placeholder for inbuilt function output image -->
+      <a href=""><img src="assets/visual_odometry_2.png" style="border:1px solid black; height:700px;"/></a>
+      <p align="justify" style="color:black; font-family: Courier Prime; font-size: 14px; font-style: italic;">
+      Figure: Trajectory computed using built-in OpenCV functions
+      </p>
+    </div>
+
+    <h3>5. Problems Encountered</h3>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    Following are the problems we encountered while working on this project:
+    </p>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    1) During the fundamental matrix calculation the values of some of the elements came out to be larger than is recommended.<br/><br/>
+    2) We found out that the matching points obtained using the SIFT and ORB algorithms came out to be different.<br/><br/>
+    3) We tried plotting the camera centre position using different computers but every time the curve came out to be different.
+    </p>
+
+    <h3>6. Results</h3>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    The visual odometry pipeline was successfully implemented, estimating the camera trajectory from successive image frames. The results demonstrate the effectiveness of the Eight-Point Algorithm combined with RANSAC for robust fundamental matrix estimation, followed by camera pose recovery and triangulation.
+    </p>
+    <a href=""><img src="assets/visual_odometry_1.png" style="border:1px solid black; height:900px;"/></a>
+    <div class="figure">
+      <!-- Placeholder for results images -->
+      <p align="justify" style="color:black; font-family: Courier Prime; font-size: 14px; font-style: italic;">
+      Figure: Visual Odometry trajectory results showing the estimated camera path
+      </p>
+    </div>
+
+    <h3>7. References</h3>
+    
+    <p align="justify" style="color:black; font-family: Courier Prime;">
+    1. Course Material - Perception for Autonomous Robots, University of Maryland<br/><br/>
+    2. Lecture on Fundamental Matrix: <a href="https://www.youtube.com/watch?v=K-j704F6F7Q" style="color: #0066cc;">YouTube Tutorial</a><br/><br/>
+    3. Project Reference: <a href="https://cmsc733.github.io/2019/proj/p3/" style="color: #0066cc;">CMSC733 Project Page</a><br/><br/>
+    4. OpenCV Library Documentation
+    </p>
+
+    <p></br></p>
+  </center>
+</section>
+
+<section id="references">
+  <center>
+  </center>
+</section>
+
+<hr>
+
+</body>
+</html>
