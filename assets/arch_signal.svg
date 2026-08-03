@@ -1,0 +1,79 @@
+<svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrSig" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#FF8160"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" fill="#0A0A0A"/>
+  <text x="30" y="34" fill="#9C9B95" font-size="13" letter-spacing="1">SIGNAL FLOW — SENSOR TO ACTUATOR</text>
+
+  <!-- sensor column -->
+  <g>
+    <rect x="30" y="60" width="190" height="56" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+    <text x="125" y="94" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">ZED Stereo Camera</text>
+  </g>
+  <g>
+    <rect x="30" y="130" width="190" height="56" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+    <text x="125" y="164" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">Intel RealSense</text>
+  </g>
+  <g>
+    <rect x="30" y="200" width="190" height="56" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+    <text x="125" y="234" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">GPS Receiver</text>
+  </g>
+  <g>
+    <rect x="30" y="270" width="190" height="56" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+    <text x="125" y="304" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">IMU</text>
+  </g>
+
+  <!-- interface labels + arrows into fusion -->
+  <line x1="220" y1="88" x2="330" y2="150" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSig)"/>
+  <text x="222" y="80" fill="#4E7A9E" font-size="10.5">USB3</text>
+  <line x1="220" y1="158" x2="330" y2="170" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSig)"/>
+  <text x="222" y="150" fill="#4E7A9E" font-size="10.5">USB3</text>
+  <line x1="220" y1="228" x2="330" y2="195" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSig)"/>
+  <text x="222" y="222" fill="#4E7A9E" font-size="10.5">UART</text>
+  <line x1="220" y1="298" x2="330" y2="215" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSig)"/>
+  <text x="222" y="298" fill="#4E7A9E" font-size="10.5">I2C</text>
+
+  <!-- fusion block -->
+  <g>
+    <rect x="330" y="140" width="190" height="90" rx="10" fill="#151513" stroke="#FF8160" stroke-width="2"/>
+    <text x="425" y="178" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">Sensor Fusion</text>
+    <text x="425" y="197" fill="#9C9B95" font-size="11" text-anchor="middle">Extended Kalman Filter</text>
+    <text x="425" y="213" fill="#9C9B95" font-size="11" text-anchor="middle">~0.5 m accuracy</text>
+  </g>
+
+  <line x1="520" y1="185" x2="600" y2="185" stroke="#FF8160" stroke-width="2" marker-end="url(#arrSig)"/>
+  <text x="522" y="177" fill="#9C9B95" font-size="10.5">pose estimate (/odom)</text>
+
+  <!-- autonomy stack -->
+  <g>
+    <rect x="600" y="140" width="200" height="90" rx="10" fill="#151513" stroke="#2A2A27" stroke-width="2"/>
+    <text x="700" y="178" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">Autonomy Stack</text>
+    <text x="700" y="197" fill="#9C9B95" font-size="11" text-anchor="middle">Jetson Nano</text>
+    <text x="700" y="213" fill="#9C9B95" font-size="11" text-anchor="middle">planning + control</text>
+  </g>
+
+  <path d="M700,230 L700,300" fill="none" stroke="#FF8160" stroke-width="2" marker-end="url(#arrSig)"/>
+  <text x="708" y="270" fill="#9C9B95" font-size="10.5">velocity + steering</text>
+  <text x="708" y="284" fill="#9C9B95" font-size="10.5">(UART / CAN)</text>
+
+  <!-- controller -->
+  <g>
+    <rect x="600" y="300" width="200" height="70" rx="10" fill="#151513" stroke="#2A2A27" stroke-width="2"/>
+    <text x="700" y="332" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">ODrive Controller</text>
+    <text x="700" y="350" fill="#9C9B95" font-size="11" text-anchor="middle">BLDC motor driver</text>
+  </g>
+
+  <line x1="600" y1="335" x2="500" y2="335" stroke="#FF8160" stroke-width="2" marker-end="url(#arrSig)"/>
+  <text x="512" y="327" fill="#9C9B95" font-size="10.5">PWM</text>
+
+  <!-- motor -->
+  <g>
+    <rect x="330" y="300" width="170" height="70" rx="10" fill="#151513" stroke="#2A2A27" stroke-width="2"/>
+    <text x="415" y="332" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">Scooter Motor</text>
+    <text x="415" y="350" fill="#9C9B95" font-size="11" text-anchor="middle">drive + steering</text>
+  </g>
+
+  <text x="30" y="430" fill="#9C9B95" font-size="11">Arrows show data direction; labels indicate the interface or message type carrying that signal.</text>
+</svg>

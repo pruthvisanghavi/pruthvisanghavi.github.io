@@ -1,114 +1,196 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <html>
-  
-  <head>
-    <title>Pruthvi Sanghavi</title>
-    <link rel="icon" type="image/png" href="images/logo.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>@view-transition{navigation:auto;}</style>
+<title>Autonomous Electric Scooter | Pruthvi Sanghavi</title>
+<link rel="icon" href="assets/profile_pic.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  :root{--max:820px;}
 
-  </head>
-<!-- ************************************************  SCRIPTS  ******************************************** -->
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      jax: ["input/TeX", "output/HTML-CSS"],
-      extensions: ["tex2jax.js"],
-      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
-      tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
-      TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
-      messageStyle: "none"
-    });
-    </script>    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-<!-- ************************************************************************************************************** -->
-<!-- ************************************************  FONTS  ******************************************* -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime&display=swap" rel="stylesheet"> -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime:wght@300&display=swap" rel="stylesheet"> -->
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-<!-- ***************************************************************************************************** -->
-  <center>
-    <h1 style="color:black; font-family: Courier Prime; font-size:35px">Autonomous Electric Scooter</h1>
-  </center>
-
-  <style> 
-  p
-  {
-      width:900px; 
-      word-wrap:break-word;
-  }
-  </style>
-    
-  <style>
-  hr{
-    
-     width: 900px;
-  }
+  /* ===== HERO ===== */
+  .page-hero{padding:36px 0 8px;}
+  .kicker{letter-spacing:.1em; margin:0 0 10px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 14px;}
+  .lede{font-size:17px; max-width:66ch; margin:0 0 26px;}
 </style>
-    
-<body style="background-color:rgb(230, 230, 230);">
-<section id="menu">
-  <center>
-    <button style="color:white"><a href="index.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Home </a></button>
-    <button style="color:white"><a href="works.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Works </a></button>
+</head>
+<body>
 
-  </center>
+<header>
+  <nav class="nav wrap" id="nav">
+    <div class="name" id="siteName"><span class="name-full">PRUTHVI SANGHAVI</span><span class="name-short">PS</span></div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="works.html" class="active">WORKS</a></li>
+        <li><a href="ideas.html">TINKERINGS</a></li>
+        <li><a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LINKEDIN</a></li>
+        <li><a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GITHUB</a></li>
+        <li class="nav-resume-item"><a href="assets/resume.pdf" download>RESUME</a></li>
+      </ul>
+      <a class="nav-resume" href="assets/resume.pdf" download>RESUME</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <a class="back-link" href="works.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back to Works</a>
+
+  <section class="page-hero">
+    <p class="kicker">Independent Project</p>
+    <h1>Autonomous Electric Scooter</h1>
+    <p class="tagline">Turning a standard electric scooter into a self-driving, summonable vehicle.</p>
+    <div class="status-row">
+      <span class="status-tag">Independent Research</span>
+      <span class="status-tag">University of Maryland</span>
+    </div>
+    <p class="lede">Built under Dr. Derek Paley at the University of Maryland, this project retrofits a standard electric scooter with the sensors, compute, and autonomy stack needed to drive itself, and be summoned the same way you'd summon a ride.</p>
+    <img class="hero-media" src="assets/scooter_in_motion.png" alt="Autonomous electric scooter">
+    <p class="media-cap">The finished scooter platform, fully instrumented and ready for testing</p>
   </section>
-  
-  <section id="body">
-    <center>
-      <p></br></p>
-      <a href=""><img src="assets/proj2.jpg" style="border:1px solid black; height:300px;"/></a>
-      <a href=""><img src="assets/scooter_in_motion.png" style="border:1px solid black; height:300px;"/></a>
 
+  <section class="story">
+    <h2>Getting around could be so much simpler</h2>
+    <p>Dockless scooters solved one problem and created another: someone still has to find the scooter, and someone still has to return it somewhere useful. Neither is guaranteed. A scooter that could drive itself back to a charging station, or come find you when you need it, removes both constraints at once.</p>
+    <p>This project started in September 2019 as a research effort to answer a simple question: what would it actually take to make that work, using hardware you could bolt onto a scooter that already exists, not a vehicle designed from scratch?</p>
+    <p class="pull">The goal was to let someone summon a scooter the same way they'd summon an Uber or a Lyft.</p>
+    <img class="story-media" src="assets/proj2.jpg" alt="Early e-scooter prototype">
+    <p class="media-cap">Early prototype, built alongside the initial research team</p>
+  </section>
 
-      <p align="left" style="color:black; font-family: Courier Prime;"><b>Introduction</b></br>
-        </br>
-        Autonomous electric scooter research started as a research project under Dr. Derek Paley at the University of Maryland, College Park in September 2019. The main
-        objective of this project was to build an autonomous electric scooter platform with a mobile app which can be used to summon an electric scooter just like summoning an
-        Uber or a Lyft.
-      </p>
-      <p align="left" style="color:black; font-family: Courier Prime;"></br>Along with the initial team, I worked on the foundation of this project by creating some earlier prototype units and concepts. 
-        The first two images shown above are the earlier prototypes of the autonomous e-scooter.</p>
-      
-      <p align="left" style="color:black; font-family: Courier Prime;"><b>Tech Stack</b></br>
-      </br>
-      The electric scooter uses Nvidia Jeston Nano as the brain, ZED stereo camera for vision and tracking and Odrive BLDC for steering. For motion the actuators from
-      the electric scooters are repurposed by rewiring them to the ODrive motor controller. Power to the scooter is supplied to through the batteries already avaiable 
-      in the electric scooter.
-      </br>
-      </p>
-      <p align="left" style="color:black; font-family: Courier Prime;">Apart from foundation work, here are the other major activities I participated into:</p>
-      <p align="left" style="color:black; font-family: Courier Prime;">
-      ➜ Developed analytical models for an electrical scooter self-righting mechanism applying engineering first principles, created simulations, constructed prototype, and conducted HIL testing. [Patent Disclosure Completed]
+  <section class="story">
+    <h2>Building the autonomy stack</h2>
+    <p>I worked on the foundation of the project: some of the earliest prototype units, the core perception and localization pipeline, and a self-righting mechanism developed from first principles, modeled analytically, simulated, built as a prototype, and validated through hardware-in-the-loop testing (patent disclosure completed).</p>
 
-      </p>
-      <p align="left" style="color:black; font-family: Courier Prime;">
-        ➜ Conducted hardware and software test experiments by building an autonomous vehicle test bench integrating perception and localization sensors (Intel RealSense Depth and Tracking Camera) for SLAM, and actuators (BLDC Motors and Controllers). 
-      </p>
-      <p align="left" style="color:black; font-family: Courier Prime;">
-        ➜ Successfully estimated the position of the autonomous electric scooter with an accuracy of 0.5 meters by fusing the GPS, IMU and Visual Odometry data streams using an Extended Kalman filter.
-      </p>
-      <p align="left" style="color:black; font-family: Courier Prime;">
-        ➜ Directed the research team in data accumulation, data annotation, 3D virtual environment creation and optimization of the C++ and Python autonomy codebase.
-      </p>
-      <p align="left" style="color:black; font-family: Courier Prime;">
-        ➜ Created Multi agent based pedestrian simulations in Vissim to analyze electric scooter social force theory model.
-      </p>
+    <div class="sim-grid">
+      <div class="sim-item">
+        <video src="assets/scooter_sim_2.mp4" autoplay loop muted playsinline></video>
+        <p><strong>Social Force Model</strong> dynamics simulation</p>
+      </div>
+      <div class="sim-item">
+        <img src="assets/scooter_sim_1.gif" alt="Self-righting mechanism recovery sequence">
+        <p><strong>Initial Scooter Simulation</strong> in gazebo</p>
+      </div>
+      <div class="sim-item sim-wide">
+        <video src="assets/scooter_self_righting_early.mp4" autoplay loop muted playsinline></video>
+        <p><span class="sim-tag">Early concept, not pursued</span><strong>First self-righting attempt</strong>: needed more force and clearance to lift the scooter than the platform could realistically provide</p>
+      </div>
+    </div>
 
-      <a href=""><img src="assets/autonomous_scooter.gif" style="border:1px solid black; height:570px;"/></a>
+    <p>Alongside that, I built an autonomous vehicle test bench integrating perception and localization sensors for SLAM, and directed the research team through data collection, annotation, 3D virtual environment creation, and ongoing optimization of the C++ and Python autonomy codebase.</p>
+  </section>
 
-    </center>
-   </section>
-    
-   <section id ="references">
-     <center>
+  <section class="story">
+    <h2>The autonomy stack</h2>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h4>Compute</h4>
+        <p>An NVIDIA Jetson Nano handles onboard processing for the full autonomy stack.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Perception</h4>
+        <p>A ZED stereo camera and an Intel RealSense depth and tracking camera provide the vision data behind SLAM and object tracking.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Localization</h4>
+        <p>GPS, IMU, and visual odometry are fused with an Extended Kalman Filter, estimating position to within 0.5 meters.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Actuation</h4>
+        <p>The scooter's own motor is repurposed and rewired into an ODrive BLDC controller for steering and drive.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Power</h4>
+        <p>Power draws from the scooter's existing batteries directly, no separate power system needed.</p>
+      </div>
+      <div class="spec-card">
+        <h4>Behavior modeling</h4>
+        <p>Multi-agent pedestrian simulations in Vissim analyzed a social-force-theory model of scooter behavior around people.</p>
+      </div>
+    </div>
+  </section>
 
-     </center>
-   </section>
-<hr>
+  <section class="story">
+    <h2>System architecture</h2>
+    <p>A quick MBSE-style pass at how the subsystems fit together: what talks to what, what power flows where, and where each sensor physically sits on the scooter.</p>
+
+    <h3 class="arch-label">System</h3>
+    <img class="arch-diagram" src="assets/arch_system.svg" alt="System block diagram">
+    <p class="arch-cap">Top-level block diagram: sensing feeds state estimation, which feeds the autonomy stack, which commands actuation. Power (dashed) reaches every block from one shared source.</p>
+
+    <h3 class="arch-label">Signal</h3>
+    <img class="arch-diagram" src="assets/arch_signal.svg" alt="Signal flow diagram">
+    <p class="arch-cap">Signal path from each sensor's native interface (USB3, UART, I2C) through fusion and planning, down to the PWM commands that actually drive the motor.</p>
+
+    <h3 class="arch-label">Power</h3>
+    <img class="arch-diagram" src="assets/arch_power.svg" alt="Power distribution diagram">
+    <p class="arch-cap">Every subsystem draws from the scooter's own existing battery pack, no separate power system, split across a 36V motor rail, a regulated 12V/5V rail for compute, and 5V/USB for sensors.</p>
+
+    <h3 class="arch-label">Sensor Placement</h3>
+    <img class="arch-diagram" src="assets/arch_sensor.svg" alt="Sensor placement diagram">
+    <p class="arch-cap">Physical sensor placement: cameras forward-facing on the handlebar, GPS at the top of the stem, IMU near the center of mass, and a wheel encoder at the rear wheel, all routed back to the Jetson Nano.</p>
+  </section>
+
+  <section class="story">
+    <h2>Funding &amp; recognition</h2>
+    <p>This project was supported by an NSF I-Corps award, which funds researchers to validate the commercial potential of a technology through structured customer discovery rather than just building in the lab.</p>
+    <div class="spec-grid" style="grid-template-columns:1fr;">
+      <div class="spec-card">
+        <h4>NSF Award #2031566</h4>
+        <p><strong>I-Corps: A Self-Driving Autonomous Electric Scooter</strong>. I served as Entrepreneurial Lead, running the project from proposal through stakeholder engagement. <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2031566" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--line);">View the award on nsf.gov ↗</a></p>
+      </div>
+    </div>
+    <p>As entrepreneurial lead, my job wasn't the hardware, it was figuring out whether anyone would actually want this. That meant running 120+ customer interviews across fleet operators, city planners, and riders, and iterating a business model canvas as each round of interviews changed what we thought we knew about the market. Two rounds of investor pitches and industry expert validation later, that work helped secure $50,000+ in grant funding to keep the project going.</p>
+  </section>
+
+  <section class="story">
+    <h2>Related research: fleet optimization</h2>
+    <p>A separate course project explored a different side of the same problem: once you have a fleet of autonomous scooters (or delivery drones), how do you route them efficiently between depots and ride requests? Working from a published multi-drone delivery paper, I adapted its "pigtailing" concept, letting a vehicle ride along a transit network partway to its destination to save battery, to a shared electric scooter fleet.</p>
+    <p>Using real station data (GBFS) for a small area of Washington, DC, and a simplified transit network, I built an allocation graph between depots and ride requests to test whether the same optimization would hold for a ground vehicle instead of a drone.</p>
+    <img class="story-media" src="assets/scooter-formulation.png" alt="Scooter depot and ride request allocation graph for Washington, DC">
+    <img class="story-media" src="assets/scooter_transit.png" alt="Scooter depot and ride request allocation graph for Washington, DC">
+
+    <p><strong>It didn't fully work.</strong> The original paper's distance calculations assume an aerial vehicle that can fly in a straight line; a scooter can't, it has to follow actual roads. Using straight-line (Euclidean) distance instead of road-network distance meant the implementation was directionally useful but not a complete or correct model of real scooter routing, a limitation I documented rather than papered over.</p>
+  </section>
+
+  <section class="story">
+    <h2>Where it stands today</h2>
+    <p>The project reached a working, fully instrumented prototype: a scooter that estimates its own position to within half a meter, drives itself using its own repurposed hardware, and includes a patent-disclosed self-righting mechanism that recovers from a fall without help. The perception and autonomy codebase, and the test bench built around it, gave the wider research team a foundation to keep building on after I moved on to full-time systems engineering work.</p>
+    <img class="story-media" src="assets/autonomous_scooter.gif" alt="Autonomous scooter navigating in real time">
+    <p class="media-cap">Autonomous navigation, running the full perception-to-actuation loop</p>
+  </section>
+
+  <div class="related">
+    <a href="works.html"><span class="rlabel">Works</span> All Projects</a>
+    <a href="ideas.html"><span class="rlabel">Tinkerings</span> Half-Baked Ideas</a>
+    <a href="mailto:sanghavipruthvi@gmail.com"><span class="rlabel">Contact</span> Ask About This Project</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-links">
+      <a href="mailto:sanghavipruthvi@gmail.com">sanghavipruthvi@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="foot-note">Pasadena, CA · rev 2026.07</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
 </body>
- </html>
+</html>

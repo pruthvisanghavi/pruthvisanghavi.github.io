@@ -1,99 +1,258 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <html>
-  
-  <head>
-    <title>Pruthvi Sanghavi</title>
-    <link rel="icon" type="image/png" href="images/logo.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>@view-transition{navigation:auto;}</style>
+<title>AWL-SB Surveillance Robot | Pruthvi Sanghavi</title>
+<link rel="icon" href="assets/profile_pic.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  :root{--max:820px;}
 
-  </head>
-<!-- ************************************************  SCRIPTS  ******************************************** -->
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      jax: ["input/TeX", "output/HTML-CSS"],
-      extensions: ["tex2jax.js"],
-      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
-      tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
-      TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
-      messageStyle: "none"
-    });
-    </script>    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-<!-- ************************************************************************************************************** -->
-<!-- ************************************************  FONTS  ******************************************* -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime&display=swap" rel="stylesheet"> -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime:wght@300&display=swap" rel="stylesheet"> -->
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  /* ===== HERO ===== */
+  .page-hero{padding:36px 0 8px;}
+  .kicker{letter-spacing:.1em; margin:0 0 10px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 14px;}
+  .lede{font-size:17px; max-width:64ch; margin:0 0 26px;}
 
-<!-- ***************************************************************************************************** -->
-  <center>
-    <h1 style="color:black; font-family: Courier Prime; font-size:35px">Air Water and Land Surveillance Robot</h1>
-  </center>
+  /* ===== SE LIFECYCLE PHASES ===== */
+  .phase{padding:50px 0; border-top:1px solid var(--line);}
+  .phase-head{display:flex; align-items:baseline; gap:14px; margin-bottom:22px;}
+  .phase-num{font-family:var(--display); font-weight:800; font-size:15px; color:var(--accent); flex:none;}
+  .phase h2{font-family:var(--display); font-weight:800; font-size:clamp(20px,3vw,26px); line-height:1.25; letter-spacing:-.01em; margin:0;}
+  .phase-sub{font-size:13px; color:var(--muted); margin:-14px 0 22px; padding-left:0;}
+  .phase p{font-size:16px; line-height:1.75; color:var(--muted); margin:0 0 16px;}
+  .phase p:last-child{margin-bottom:0;}
+  .phase p strong{color:var(--ink);}
+  .phase-media{width:100%; border-radius:16px; border:1px solid var(--line); display:block; background:#fff; margin:24px 0 8px;}
 
-  <style> 
-  p
-  {
-      width:900px; 
-      word-wrap:break-word;
-  }
-  </style>
-    
-  <style>
-  hr{
-    
-     width: 900px;
-  }
+  .cat-block{margin-bottom:20px;}
+  .cat-block:last-child{margin-bottom:0;}
+  .cat-label{font-family:var(--display); font-weight:700; font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--accent); margin:0 0 10px;}
+  .req-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .req-list li{display:flex; gap:12px; align-items:baseline; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:11px 15px;}
+  .req-id{font-family:var(--display); font-weight:700; font-size:12px; color:var(--accent); flex:none; min-width:50px;}
+  .req-list p{margin:0; font-size:14px; color:var(--ink); line-height:1.5;}
+  .req-list p strong{color:var(--ink);}
+
+  .trade-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin-bottom:14px;}
+  .trade-card:last-child{margin-bottom:0;}
+  .trade-card h4{font-family:var(--display); font-weight:700; font-size:14.5px; margin:0 0 8px; color:var(--ink);}
+  .trade-card p{font-size:14px; color:var(--muted); line-height:1.6; margin:0;}
+  .req-ref{font-family:var(--display); font-weight:700; font-size:10.5px; color:var(--accent); background:rgba(255,129,96,.1); border-radius:5px; padding:2px 6px; margin-right:5px;}
+
+  .maturity-box{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 24px; margin-bottom:22px;}
+  .maturity-box p{margin:0; font-size:14.5px; color:var(--ink); line-height:1.7;}
+  .next-steps{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .next-steps li{display:flex; gap:14px;}
+  .next-steps .n-num{font-family:var(--display); font-weight:800; font-size:13px; color:var(--accent); flex:none; width:26px;}
+  .next-steps h4{font-family:var(--display); font-weight:700; font-size:14.5px; margin:0 0 4px; color:var(--ink);}
+  .next-steps p{font-size:14px; color:var(--muted); line-height:1.6; margin:0;}
+
+  /* ===== SCHEMATICS ===== */
+  .schematic-grid{display:flex; flex-direction:column; gap:16px;}
+  .schematic-grid img{width:100%; height:auto; border-radius:14px; border:1px solid var(--line); display:block; background:#fff; padding:12px;}
+
 </style>
-    
-<body style="background-color:rgb(230, 230, 230);">
-<section id="menu">
-  <center>
-    <button style="color:white"><a href="index.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Home </a></button>
-    <button style="color:white"><a href="works.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Works </a></button>
+</head>
+<body>
 
-  </center>
+<header>
+  <nav class="nav wrap" id="nav">
+    <div class="name" id="siteName"><span class="name-full">PRUTHVI SANGHAVI</span><span class="name-short">PS</span></div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="works.html" class="active">WORKS</a></li>
+        <li><a href="ideas.html">TINKERINGS</a></li>
+        <li><a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LINKEDIN</a></li>
+        <li><a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GITHUB</a></li>
+      </ul>
+      <a class="nav-resume" href="assets/resume.pdf" download>RESUME</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <a class="back-link" href="works.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back to Works</a>
+
+  <section class="page-hero">
+    <p class="kicker">Independent Project</p>
+    <h1>Air, Water &amp; Land Surveillance Robot</h1>
+    <p class="tagline">A single spherical robot built to move across land, water, and air.</p>
+    <div class="status-row">
+      <span class="status-tag">Detailed Design &middot; Patent Disclosure</span>
+      <span class="date-tag">May, 2018</span>
+    </div>
+    <p class="lede">AWL-SB is a holonomic, spherical robot designed for reconnaissance and surveillance in terrain that spans multiple domains. Below is the project walked through a standard systems engineering lifecycle, from concept of operations through detailed design, and an honest account of the stages it didn't reach.</p>
+    <div class="tag-row">
+      <span class="tag">Mechanical Design</span>
+      <span class="tag">Multi-Domain Robotics</span>
+      <span class="tag">Holonomic Systems</span>
+    </div>
+    <img class="hero-media" src="assets/awl.png" alt="AWL-SB robot prototype">
+    <p class="media-cap">Early AWL-SB build, prepared for DRDO evaluation</p>
   </section>
-  
-  <section id="body">
-    <center>
-      <p></br></p>
-      <a href=""><img src="assets/proj1.png" style="border:1px solid black; height:300px;"/></a>
-      <a href=""><img src="assets/drdo.jpg" style="border:1px solid black; height:300px;"/></a>
 
+  <!-- ===== 01 CONCEPT & NEEDS ===== -->
+  <section class="phase">
+    <div class="phase-head"><span class="phase-num">01</span><h2>Concept &amp; Needs</h2></div>
+    <p class="phase-sub">Concept of Operations</p>
+    <p><strong>Stakeholder needs.</strong> The project targeted two overlapping users: defence operators who need reconnaissance in terrain a soldier can't safely or quickly reach, and researchers in fields like archaeology, mapping, and environmental surveillance who face the same multi-terrain problem in a civilian form.</p>
+    <p><strong>Concept of Operations.</strong> The robot is deployed to a site and moves across whatever terrain it encounters, land, water, or air, without being swapped for a different vehicle. Cameras built into the transparent shell continuously capture the surroundings, regardless of which mode the robot is in. Mode changes (say, water to flight, to clear an obstacle) are handled by the same shell-opening and propeller-deployment sequence, not a separate manual reconfiguration step.</p>
+    <p><strong>Operating environment.</strong> The design targeted terrain that breaks single-domain robots: narrow caves, high-altitude slopes, and mixed land/water sites, the same environments where wheeled robots stall out and where swapping between multiple purpose-built vehicles is impractical in the field.</p>
+  </section>
 
-      <p align="left" style="color:black; font-family: Courier Prime;"><b>Introduction:</b></br>Many difficulties are faced in defence and research sector due to a lack of proper system which can search, detect, and examine issues. These problems become more complicated when they are spread across multiple dimensions. In defence sector, accurate reconnaissance mission demands a system that has a capability of manoeuvring in all the three dimensions (land, water and air). Similarly, in research fields such as archaeology, mapping, surveillance etc. also needs the system to research in different terrains. To solve these problems, we are proposing a robot with competence of movement on land, water surface and in air. This patent primarily details the designs of the mechanisms which are used to carry out the above-mentioned operations. Secondarily, this patent describes electronics. All the electronic components used are standard parts. The major contribution of this patent is the novel mechanisms which allow the robot to perform motion in multiple media. The design we are proposing is a holonomic system made up of a spherical shell which consists of all the components which are necessary for motion, mechanism which are crucial for the actuation of motion giving elements. In addition to that the invention also consists of the parts which are essential for the purpose of surveillance and used for applications where robots with capability of motion in multiple terrain is required such as narrow caves, high altitude etc. This multi terrain robot surpasses the conventionally used robots by employing different mechanisms. The development of multi-terrain robot is increasing rapidly nowadays for applications in various fields such as in military use which includes surveillance, mine detection, and sometimes used also as a weapon. Along with that the application in the fields of space and planetary exploration such as in the testing and detection of soil and the environment of planets, sample collection has necessitated the use of such multi-terrain robot. Primitively researchers have focussed on the design of robots having wheels for mobility, but wheeled robots have difficulties in traversing through rough terrains, incapability of collecting information about underwater activities and the design and material constraints such as heat, chemicals etc which may damage the material of the wheels. Drone surveillance is used to gain intelligence against enemy targets by government agencies and against business competitors for high-level competitive intelligence (CI) gathering. Other applications of drone surveillance include law enforcement, private investigation, spying, disaster recovery, search and rescue, drone journalism, photography, Lidar surveys and military reconnaissance. In the case of military operations, surveillance drones may also be weaponized.</p>
-      <p align="left" style="color:black; font-family: Courier Prime;"><b>Technical Description:</b></br>The present invention provides a spherical holonomic morphology that is formed by the integration of mechanisms for mobility on various terrains and efficient surveillance. The organization of the apparatus can be divided into several different modules: The primary modules such as the land module, the flight module, water module, and surveillance module along with all the secondary modules necessary for the functioning of the primary modules. The spherical shell of the apparatus is transparent allowing for the perception of the surroundings using inbuilt cameras. The main advantage of spherical geometry is it is free from non-holonomic constraints. The land module consists of two submodules, which controls the movement and the rotational freedom of the robot. For linear motion, present invention proposed a mechanism that comprises of arms contacting the inner surface of the sphere. These arms are connected on the shafts of the motors that are further mounted on the supporting plate. A third motor is mounted on other supporting plate. The rotational module motor coincides with the vertical axis of the plate. The rotational module motor consists of a momentum wheel. The reaction of this momentum wheel provides for the change in the angular orientation of the robot and thereby would be helpful in maneuvering the robot in various directions. The flight module consisting of four Brushless Direct Current (BLDC) motors with a gearbox mounted on it. Foldable propeller are mounted on the output shaft of the gearbox. The function of the gearbox is to open the folded propeller during the flight mode and closing it during motion or floating mode. Non-folding propellers occupy more space in the robot assembly thereby decreasing the compactness of the robot; foldable propellers occupy half the space making the robot more compact. The motors are mounted on links that are connected to an actuator using a gear train. These links open and move out of the robot as the upper hemisphere is raised which is possible using a rack and pinion mechanism. The robot would remain floating on the water surface due to the buoyancy. The land motion module would let the robot move on water surface.</p>
-      <p align="left" style="color:black; font-family: Courier Prime;"><b>Technical Description:</b></br>1 and 2 indicates the upper and the lower spherical shell which forms the outer body of the robot. This spherical morphology provides a holonomic freedom to the robot. 3, 4, 5 shows the magnetic ring, guide way and the driver circular ring which forms the part of the driving module. 6 is a magnet attached on the surface of the shell for shell opening and closing mechanism. 7, 8, 9, 10, 11 and 12 are the rack, pinion, Motor 1, Balancing mass, Support plate 1 and hollow cylinder which combined form the mechanism for the opening and closing the shell. 13 and 14 represents the gearbox and brushless DC motor. The gearbox sits on the motor, opens, and closes the propeller. 15 are the links on which 14 is attached. 16, 17 are the support plates which support the mechanisms. 18 is a motor that drives the mechanism that actuates the links of the flight module. 19 is also a motor that drives the sphere on land. 20, 21, 22, 23 and 24 shows gears, belts, pulleys, bearings of the flight module activation mechanism. 25 Show the shell along with a plate on which 26 Motor, 28 Battery and 29 Electronic components rests. 26 is a motor on which 27 the reaction wheel is mounted. A camera 32 located on outer surface of hollow cylinder 12. 33 Foldable propellers are connected to the 13 gearbox output shafts.</p>
-      <p align="left" style="color:black; font-family: Courier Prime;"><b>Sketches and Schematics:</b></br></p>
-      <a href=""><img src="assets/awl-1.png" style="border:1px solid black; height:900px;"/></a>
-      <p></br></p>
-      <a href=""><img src="assets/awl-2.png" style="border:1px solid black; height:1000px;"/></a>
-      <p></br></p>
-      <a href=""><img src="assets/awl-3.png" style="border:1px solid black; height:1000px;"/></a>
-      <p></br></p>
-      <a href=""><img src="assets/awl-4.png" style="border:1px solid black; height:985px;"/></a>
-      <p></br></p>
-      <a href=""><img src="assets/awl-5.png" style="border:1px solid black; height:1065px;"/></a>
-      <p></br></p>
-      <a href=""><img src="assets/awl-6.png" style="border:1px solid black; height:1175px;"/></a>
-      <p></br></p>
-      <a href=""><img src="assets/awl-7.png" style="border:1px solid black; height:275px;"/></a>
+  <!-- ===== 02 REQUIREMENTS ENGINEERING ===== -->
+  <section class="phase">
+    <div class="phase-head"><span class="phase-num">02</span><h2>Requirements Engineering</h2></div>
+    <p class="phase-sub">Decomposed from the ConOps above into testable requirements</p>
 
-      <!-- <p align="justify" style="color:black; font-family: Courier Prime;">$P(H/E) = \frac{P(E)P(H)}{(P(E)+P(H)) + (P(-H)P(E/-H))}$</p> -->
-      
-<!--       <p align="justify" style="color:black; font-family: Courier Prime;">(To be Continued...)</p> -->
-    </center>
-   </section>
-    
-   <section id ="references">
-     <center>
+    <div class="cat-block">
+      <p class="cat-label">Functional</p>
+      <ul class="req-list">
+        <li><span class="req-id">REQ-1</span><p><strong>Land mobility:</strong> traverse flat and sloped land terrain without external wheels.</p></li>
+        <li><span class="req-id">REQ-2</span><p><strong>Water mobility:</strong> remain buoyant and mobile on a water surface, reusing the land drive mechanism.</p></li>
+        <li><span class="req-id">REQ-3</span><p><strong>Aerial mobility:</strong> transition to flight when land or water travel is insufficient.</p></li>
+        <li><span class="req-id">REQ-4</span><p><strong>Surveillance:</strong> capture visual data of the surrounding environment in all three modes.</p></li>
+        <li><span class="req-id">REQ-6</span><p><strong>Mode transition:</strong> switch between modes without manual reconfiguration.</p></li>
+      </ul>
+    </div>
 
-     </center>
-   </section>
-<hr>
+    <div class="cat-block">
+      <p class="cat-label">Constraints</p>
+      <ul class="req-list">
+        <li><span class="req-id">REQ-5</span><p><strong>Size &amp; weight:</strong> stay compact and light enough for propulsion and actuation to fit within one shell.</p></li>
+        <li><span class="req-id">REQ-7</span><p><strong>Cost:</strong> keep unit cost within the program's budget.</p></li>
+      </ul>
+    </div>
+    <p style="margin-top:18px;">No formal performance requirements (range, speed, wind tolerance) were specified for this project; it stayed at the functional and constraint level rather than being quantified into performance targets, which would have been the next step before a build.</p>
+  </section>
+
+  <!-- ===== 03 SYSTEM ARCHITECTURE & TRADE STUDIES ===== -->
+  <section class="phase">
+    <div class="phase-head"><span class="phase-num">03</span><h2>System Architecture &amp; Trade Studies</h2></div>
+    <p class="phase-sub">How the modules interact, and the decisions that shaped them</p>
+
+    <p><strong>Architecture.</strong> The system splits into four primary modules, land, flight, water, and surveillance, sharing one transparent spherical shell. The interfaces between them are mostly mechanical rather than electrical: the same rack-and-pinion motion that opens the hemisphere also deploys the flight module's propellers, and the land module's drive mechanism doubles as the water-surface propulsion, so two "separate" capabilities share one physical interface instead of needing independent hardware.</p>
+
+    <p><strong>Make vs. buy.</strong> Per the patent disclosure, all electronic components (motors, battery, control electronics) were standard, off-the-shelf parts. The project's actual contribution was the custom mechanical design: the shell-opening linkage, the propeller fold/unfold gearbox, and the shared drive train, not the electronics inside it.</p>
+
+    <div class="trade-card">
+      <h4><span class="req-ref">REQ-3</span><span class="req-ref">REQ-5</span><span class="req-ref">REQ-6</span>Trade study: foldable vs. solid propellers</h4>
+      <p>The robot's size was fixed early by weight constraints, and at that size solid propellers didn't fit within the shell. Foldable propellers solved the space problem and reused the same open/close motion already driving the hemisphere, so one mechanism did double duty instead of needing a separate deployment system.</p>
+    </div>
+    <div class="trade-card">
+      <h4><span class="req-ref">REQ-3</span><span class="req-ref">REQ-7</span>Trade study: BLDC vs. DC motors, flight module</h4>
+      <p>Lifting the shell demanded a minimum thrust-to-weight ratio just to get off the ground, so that was the primary selection criterion, with unit cost second. BLDC motors delivered the best thrust-to-weight within budget, despite the added ESC complexity over a brushed motor.</p>
+    </div>
+    <div class="trade-card">
+      <h4><span class="req-ref">REQ-1</span><span class="req-ref">REQ-7</span>Trade study: BLDC vs. DC motors, land module</h4>
+      <p>Land and water driving didn't need flight-grade power density, so a brushed DC motor met the torque and speed required at a lower cost, which mattered more here since land-mode performance wasn't the tightest constraint.</p>
+    </div>
+  </section>
+
+  <!-- ===== 04 DETAILED DESIGN ===== -->
+  <section class="phase">
+    <div class="phase-head"><span class="phase-num">04</span><h2>Detailed Design</h2></div>
+    <p class="phase-sub">Mechanical, in full; electrical and software stayed at standard-component level</p>
+
+    <p>The spherical shell stays free of the non-holonomic constraints that limit wheeled designs, and remains transparent so onboard cameras can see out in every mode. The land module drives the sphere using arms that contact its inner surface, and steers it with a momentum wheel reacting against the robot's orientation. The flight module's four BLDC motors each fold their propeller away for land or water travel and unfold it for flight, driven by the same rack-and-pinion motion that lifts the upper hemisphere.</p>
+    <p>Inside each propeller's gearbox, a Geneva mechanism converts the motor's continuous rotation into the discrete, indexed motion needed to fold or unfold the blade, and a pawl-ratchet mechanism locks that position afterward so it can't drift back under load without the motor re-engaging.</p>
+    <p>The upper and lower shells form the outer body; a magnetic ring, guideway, and driver ring form the driving module; and a shell-mounted magnet, rack, pinion, motor, balancing mass, and support plate together open and close the shell. A battery and electronics package rides on an internal support plate, with a camera on the outer surface of the central hollow cylinder for surveillance.</p>
+    <img class="phase-media" src="assets/awl-1.png" alt="AWL-SB outer morphology schematic">
+    <p class="media-cap">Outer morphology and shell assembly</p>
+  </section>
+
+  <!-- ===== 05 PROJECT MATURITY / NEXT STEPS ===== -->
+  <section class="phase">
+    <div class="phase-head"><span class="phase-num">05</span><h2>Where the Project Stopped</h2></div>
+    <p class="phase-sub">Verification, build, test, and production, honestly</p>
+
+    <div class="maturity-box">
+      <p><strong>This project reached detailed mechanical design and a filed patent disclosure.</strong> It did not proceed to a physical build, formal verification and validation, integration testing, or production. The sections below describe what those stages would have required, not what was actually done.</p>
+    </div>
+
+    <ul class="next-steps">
+      <li>
+        <span class="n-num">06</span>
+        <div>
+          <h4>Verification &amp; Validation Planning</h4>
+          <p>Each requirement would need a defined verification method before any build started: bench testing for the propeller fold/unfold cycle and buoyancy margins, analysis for thrust-to-weight and structural loads, and inspection for shell sealing and component fit.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n-num">07</span>
+        <div>
+          <h4>Build, Integration &amp; Test Campaigns</h4>
+          <p>A physical prototype would move through component-level bench tests (gearbox, shell-actuation linkage), then subsystem integration (land, flight, water modules), then full-system field tests, likely starting with land and water modes before attempting untethered flight.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n-num">08</span>
+        <div>
+          <h4>Design Reviews as Gates</h4>
+          <p>A PDR would sit naturally after the trade studies in Section 03, and a CDR after the detailed design in Section 04, each checking open risks and requirement closure before committing to a physical build.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n-num">09</span>
+        <div>
+          <h4>Risk &amp; Safety Management</h4>
+          <p>Given the defence-reconnaissance use case, a safety case and failure-mode analysis (loss of buoyancy, propeller-deployment jam, water ingress into the shell) would need to be built incrementally alongside the design, not bolted on afterward.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n-num">10</span>
+        <div>
+          <h4>Production &amp; Sustaining</h4>
+          <p>Moving beyond a single prototype would require a DFM/DFA pass on the custom mechanisms, since the Geneva and pawl-ratchet assemblies were designed for function first, not for repeatable manufacture at volume.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 style="font-family:var(--display); font-weight:700; font-size:19px; margin:0 0 18px; padding-top:10px; border-top:1px solid var(--line);">Sketches &amp; Schematics</h2>
+    <div class="schematic-grid">
+      <img src="assets/awl-2.png" alt="AWL-SB schematic 2">
+      <img src="assets/awl-3.png" alt="AWL-SB schematic 3">
+      <img src="assets/awl-4.png" alt="AWL-SB schematic 4">
+      <img src="assets/awl-5.png" alt="AWL-SB schematic 5">
+      <img src="assets/awl-6.png" alt="AWL-SB schematic 6">
+      <img src="assets/awl-7.png" alt="AWL-SB schematic 7">
+    </div>
+  </section>
+
+  <div class="related">
+    <a href="works.html"><span class="rlabel">Works</span> All Projects</a>
+    <a href="ideas.html"><span class="rlabel">Tinkerings</span> Half-Baked Ideas</a>
+    <a href="mailto:sanghavipruthvi@gmail.com"><span class="rlabel">Contact</span> Ask About This Project</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-links">
+      <a href="mailto:sanghavipruthvi@gmail.com">sanghavipruthvi@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="foot-note">Pasadena, CA · rev 2026.07</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
 </body>
- </html>
+</html>
