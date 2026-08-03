@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>@view-transition{navigation:auto;}</style>
+<title>Flippy | Miso Robotics | Pruthvi Sanghavi</title>
+<link rel="icon" href="assets/profile_pic.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  :root{--max:820px;}
+
+  /* ===== HERO ===== */
+  .page-hero{padding:36px 0 8px;}
+  .kicker{letter-spacing:.1em; margin:0 0 10px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 14px;}
+  .lede{font-size:17px; max-width:64ch; margin:0 0 26px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap" id="nav">
+    <div class="name" id="siteName"><span class="name-full">PRUTHVI SANGHAVI</span><span class="name-short">PS</span></div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="works.html" class="active">WORKS</a></li>
+        <li><a href="ideas.html">TINKERINGS</a></li>
+        <li><a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LINKEDIN</a></li>
+        <li><a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GITHUB</a></li>
+      </ul>
+      <a class="nav-resume" href="assets/resume.pdf" download>RESUME</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <a class="back-link" href="works.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back to Works</a>
+
+  <section class="page-hero">
+    <p class="kicker">Miso Robotics</p>
+    <h1>Flippy</h1>
+    <p class="tagline">Building the systems engineering function behind a commercially deployed kitchen robot.</p>
+    <div class="status-row">
+      <span class="status-tag">Systems Engineer</span>
+      <span class="date-tag">July 2021 – Present</span>
+    </div>
+    <p class="lede">Flippy is Miso Robotics' robotic kitchen assistant, deployed in commercial restaurants to automate high-heat, repetitive cooking tasks like frying. I work at the boundary between mechanical, electrical, firmware, and software, the layer where most of the interesting failures actually happen, rather than on any single part of the robot itself.</p>
+    <img class="hero-media" src="assets/flippy_2.png" alt="Miso Robotics Flippy in a commercial kitchen">
+    <p class="media-cap">Flippy deployed in a commercial kitchen</p>
+  </section>
+
+  <section class="story">
+    <h2>What I actually do</h2>
+    <p>My job isn't building any one subsystem, it's making sure the subsystems agree with each other. I write the requirements and interface contracts that let cross-functional teams (mechanical, electrical, firmware, software) build against the same system instead of building against each other, then run the verification and validation that proves the result actually meets those requirements before it ships to a live kitchen.</p>
+    <div class="proto-grid">
+      <div class="proto-item">
+        <img src="assets/flippy_1.jpg" alt="Miso Robotics Flippy hardware detail">
+        <p><strong>Flippy</strong> hardware in the field</p>
+      </div>
+      <div class="proto-item">
+        <img src="assets/miso_lab.jpg" alt="Miso Robotics lab and test environment">
+        <p><strong>Test &amp; validation</strong> environment</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <h2>Functional safety</h2>
+    <p>A robot working alongside people in a commercial kitchen has to clear a real safety bar, not just a performance one. That side of the role covers hazard analysis and risk assessment carried through to certification, most recently achieving Performance Level d under ISO 10218, the standard covering safety requirements for industrial robots working near people.</p>
+  </section>
+
+  <section class="story">
+    <h2>Where it stands</h2>
+    <p>This is ongoing, active work: I'm currently building out the systems engineering function at Miso from the ground up, requirements management, V&amp;V planning, and release readiness for a robot that's already deployed and running in production kitchens, not a lab prototype. <em>This page is an early draft focused on what's safely public about the role; I'll expand it with more specifics over time.</em></p>
+  </section>
+
+  <div class="related">
+    <a href="works.html"><span class="rlabel">Works</span> All Projects</a>
+    <a href="ideas.html"><span class="rlabel">Tinkerings</span> Half-Baked Ideas</a>
+    <a href="mailto:sanghavipruthvi@gmail.com"><span class="rlabel">Contact</span> Ask About This Project</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-links">
+      <a href="mailto:sanghavipruthvi@gmail.com">sanghavipruthvi@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="foot-note">Pasadena, CA · rev 2026.07</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

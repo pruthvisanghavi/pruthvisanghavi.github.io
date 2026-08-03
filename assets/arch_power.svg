@@ -1,0 +1,59 @@
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrPow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#B8722A"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="420" fill="#0A0A0A"/>
+  <text x="30" y="34" fill="#9C9B95" font-size="13" letter-spacing="1">POWER DISTRIBUTION</text>
+
+  <!-- battery -->
+  <g>
+    <rect x="60" y="160" width="200" height="90" rx="10" fill="#151513" stroke="#B8722A" stroke-width="2"/>
+    <text x="160" y="198" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">Scooter Battery</text>
+    <text x="160" y="217" fill="#9C9B95" font-size="11" text-anchor="middle">Pack, existing OEM cells</text>
+    <text x="160" y="233" fill="#9C9B95" font-size="11" text-anchor="middle">nominal ~36V</text>
+  </g>
+
+  <line x1="260" y1="205" x2="330" y2="205" stroke="#B8722A" stroke-width="2" marker-end="url(#arrPow)"/>
+
+  <!-- distribution -->
+  <g>
+    <rect x="330" y="160" width="200" height="90" rx="10" fill="#151513" stroke="#B8722A" stroke-width="2"/>
+    <text x="430" y="198" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">Power Distribution</text>
+    <text x="430" y="217" fill="#9C9B95" font-size="11" text-anchor="middle">Fusing + regulation</text>
+    <text x="430" y="233" fill="#9C9B95" font-size="11" text-anchor="middle">36V / 12V / 5V rails</text>
+  </g>
+
+  <!-- three branches -->
+  <path d="M530,180 L610,80" fill="none" stroke="#B8722A" stroke-width="1.5" marker-end="url(#arrPow)"/>
+  <path d="M530,205 L610,205" fill="none" stroke="#B8722A" stroke-width="1.5" marker-end="url(#arrPow)"/>
+  <path d="M530,230 L610,330" fill="none" stroke="#B8722A" stroke-width="1.5" marker-end="url(#arrPow)"/>
+
+  <text x="545" y="130" fill="#9C9B95" font-size="10.5">5V, ~4A</text>
+  <text x="545" y="197" fill="#9C9B95" font-size="10.5">36V direct</text>
+  <text x="545" y="290" fill="#9C9B95" font-size="10.5">5V, USB</text>
+
+  <!-- jetson -->
+  <g>
+    <rect x="610" y="45" width="220" height="75" rx="10" fill="#151513" stroke="#2A2A27" stroke-width="2"/>
+    <text x="720" y="76" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">Jetson Nano</text>
+    <text x="720" y="95" fill="#9C9B95" font-size="11" text-anchor="middle">compute, buck-converted from 36V</text>
+  </g>
+
+  <!-- odrive + motor -->
+  <g>
+    <rect x="610" y="168" width="220" height="75" rx="10" fill="#151513" stroke="#2A2A27" stroke-width="2"/>
+    <text x="720" y="199" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">ODrive + Motor</text>
+    <text x="720" y="218" fill="#9C9B95" font-size="11" text-anchor="middle">runs directly off pack voltage</text>
+  </g>
+
+  <!-- sensors -->
+  <g>
+    <rect x="610" y="295" width="220" height="75" rx="10" fill="#151513" stroke="#2A2A27" stroke-width="2"/>
+    <text x="720" y="326" fill="#F5F4F0" font-size="14" font-weight="700" text-anchor="middle">Sensors</text>
+    <text x="720" y="345" fill="#9C9B95" font-size="11" text-anchor="middle">cameras, GPS, IMU via USB/5V</text>
+  </g>
+
+  <text x="30" y="390" fill="#9C9B95" font-size="11">No separate battery pack: every subsystem draws from the scooter's own existing battery.</text>
+</svg>

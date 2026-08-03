@@ -1,0 +1,67 @@
+<svg viewBox="0 0 960 460" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrSen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#4E7A9E"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="460" fill="#0A0A0A"/>
+  <text x="30" y="34" fill="#9C9B95" font-size="13" letter-spacing="1">SENSOR PLACEMENT &amp; INTERFACES</text>
+
+  <!-- simplified scooter silhouette -->
+  <g stroke="#2A2A27" stroke-width="2" fill="none">
+    <!-- deck -->
+    <line x1="150" y1="360" x2="480" y2="360"/>
+    <!-- rear wheel -->
+    <circle cx="170" cy="385" r="24"/>
+    <!-- front wheel -->
+    <circle cx="460" cy="385" r="24"/>
+    <!-- stem -->
+    <line x1="440" y1="360" x2="440" y2="140"/>
+    <!-- handlebar -->
+    <line x1="390" y1="140" x2="490" y2="140"/>
+  </g>
+
+  <!-- Jetson Nano mounted on deck -->
+  <rect x="230" y="330" width="110" height="30" rx="6" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+  <text x="285" y="350" fill="#F5F4F0" font-size="10.5" text-anchor="middle">Jetson Nano</text>
+
+  <!-- sensor callouts -->
+  <!-- ZED camera, handlebar -->
+  <circle cx="465" cy="140" r="6" fill="#FF8160"/>
+  <line x1="465" y1="140" x2="700" y2="70" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSen)"/>
+  <rect x="700" y="45" width="220" height="55" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+  <text x="810" y="68" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">ZED Stereo Camera</text>
+  <text x="810" y="86" fill="#9C9B95" font-size="10.5" text-anchor="middle">forward-facing, USB3</text>
+
+  <!-- RealSense, handlebar -->
+  <circle cx="410" cy="140" r="6" fill="#FF8160"/>
+  <line x1="410" y1="140" x2="700" y2="130" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSen)"/>
+  <rect x="700" y="105" width="220" height="55" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+  <text x="810" y="128" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">Intel RealSense</text>
+  <text x="810" y="146" fill="#9C9B95" font-size="10.5" text-anchor="middle">depth + tracking, USB3</text>
+
+  <!-- GPS, top of stem -->
+  <circle cx="440" cy="145" r="6" fill="#FF8160"/>
+  <line x1="440" y1="145" x2="700" y2="195" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSen)"/>
+  <rect x="700" y="170" width="220" height="55" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+  <text x="810" y="193" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">GPS Antenna</text>
+  <text x="810" y="211" fill="#9C9B95" font-size="10.5" text-anchor="middle">stem-mounted, UART</text>
+
+  <!-- IMU near center of mass, deck -->
+  <circle cx="300" cy="355" r="6" fill="#FF8160"/>
+  <line x1="300" y1="355" x2="700" y2="260" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSen)"/>
+  <rect x="700" y="235" width="220" height="55" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+  <text x="810" y="258" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">IMU</text>
+  <text x="810" y="276" fill="#9C9B95" font-size="10.5" text-anchor="middle">near center of mass, I2C</text>
+
+  <!-- Wheel encoder, rear wheel -->
+  <circle cx="170" cy="385" r="6" fill="#FF8160"/>
+  <line x1="170" y1="385" x2="700" y2="325" stroke="#4E7A9E" stroke-width="1.5" marker-end="url(#arrSen)"/>
+  <rect x="700" y="300" width="220" height="55" rx="8" fill="#151513" stroke="#2A2A27" stroke-width="1.5"/>
+  <text x="810" y="323" fill="#F5F4F0" font-size="13" font-weight="700" text-anchor="middle">Wheel Encoder</text>
+  <text x="810" y="341" fill="#9C9B95" font-size="10.5" text-anchor="middle">rear wheel, digital pulse</text>
+
+  <!-- Jetson link -->
+  <line x1="285" y1="330" x2="285" y2="300" stroke="#4E7A9E" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="30" y="430" fill="#9C9B95" font-size="11">All sensors route back to the Jetson Nano for fusion and planning (see Signal Architecture).</text>
+</svg>

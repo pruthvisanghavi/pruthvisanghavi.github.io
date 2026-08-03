@@ -1,216 +1,112 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <html>
-  
-  <head>
-    <title>Pruthvi Sanghavi</title>
-    <link rel="icon" type="image/png" href="assets/profile_pic.jpg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>@view-transition{navigation:auto;}</style>
+<title>Underwater Breathing System | Pruthvi Sanghavi</title>
+<link rel="icon" href="assets/profile_pic.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  :root{--max:820px;}
 
-  </head>
-<!-- ************************************************  SCRIPTS  ******************************************** -->
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      jax: ["input/TeX", "output/HTML-CSS"],
-      extensions: ["tex2jax.js"],
-      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
-      tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
-      TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } } },
-      messageStyle: "none"
-    });
-    </script>    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-<!-- ************************************************************************************************************** -->
-<!-- ************************************************  FONTS  ******************************************* -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime&display=swap" rel="stylesheet"> -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Courier Prime:wght@300&display=swap" rel="stylesheet"> -->
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-<!-- ***************************************************************************************************** -->
-  <center>
-    <h1 style="color:black; font-family: Courier Prime; font-size:35px">Underwater Breathing System</h1>
-  </center>
-
-  <style> 
-  p
-  {
-      width:900px; 
-      word-wrap:break-word;
-  }
-  </style>
-    
-  <style>
-  hr{
-    
-     width: 900px;
-  }
+  /* ===== HERO ===== */
+  .page-hero{padding:36px 0 8px;}
+  .kicker{letter-spacing:.1em; margin:0 0 10px;}
+  h1{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 14px;}
+  .lede{font-size:17px; max-width:64ch; margin:0 0 26px;}
 </style>
-    
-<body style="background-color:rgb(230, 230, 230);">
-<section id="menu">
-  <center>
-    <button style="color:white"><a href="index.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Home </a></button>
-    <button style="color:white"><a href="works.html" style="text-decoration: none; color:black; font-family: Courier Prime; font-size: 17px;"> Works </a></button>
+</head>
+<body>
 
-  </center>
+<header>
+  <nav class="nav wrap" id="nav">
+    <div class="name" id="siteName"><span class="name-full">PRUTHVI SANGHAVI</span><span class="name-short">PS</span></div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="works.html" class="active">WORKS</a></li>
+        <li><a href="ideas.html">TINKERINGS</a></li>
+        <li><a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LINKEDIN</a></li>
+        <li><a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GITHUB</a></li>
+      </ul>
+      <a class="nav-resume" href="assets/resume.pdf" download>RESUME</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <a class="back-link" href="works.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back to Works</a>
+
+  <section class="page-hero">
+    <p class="kicker">Independent Project</p>
+    <h1>Underwater Breathing System</h1>
+    <p class="tagline">A gill-inspired system for pulling dissolved oxygen straight out of water.</p>
+    <div class="status-row">
+      <span class="status-tag">Concept · Mathematical Design</span>
+      <span class="date-tag">2016 – 2019</span>
+    </div>
+    <p class="lede">Conventional scuba gear solves underwater breathing with large, heavy oxygen tanks that cap both dive time and depth. This project asks a different question: what if, instead of carrying oxygen down with you, you extracted it directly from the water the way a fish does?</p>
+    <img class="hero-media" src="assets/breathingsys_1.png" alt="Underwater breathing system concept diagram">
+    <p class="media-cap">Counterflow diffusion concept, modeled on fish gill structure</p>
   </section>
-  
-  <section id="body">
-    <center>
-      <p></br></p>
-      <!-- <a href=""><img src="assets/proj2.jpg" style="border:1px solid black; height:300px;"/></a> -->
-      <!-- <a href=""><img src="assets/escoooter_1.png" style="border:1px solid black; height:300px;"/></a> -->
 
+  <section class="story">
+    <h2>Why fish gills</h2>
+    <p>Oxygen dissolves in water because of its partial pressure in the atmosphere above it, which means there's usable oxygen in the water around a diver, if you have a way to pull it out. Fish already solve exactly this problem: water flows over their gills and through a structure called the primary lamellae, subdivided into secondary lamellae, where the actual gas exchange happens. Blood in the gill and water flowing over it move in opposite directions, counterflow, which keeps a partial pressure gradient between them along the entire length of the exchange surface. Oxygen diffuses from the oxygen-rich water into the deoxygenated blood, and carbon dioxide diffuses the other way, out of the blood and into the water.</p>
+    <p class="pull">If blood and water moved the same direction instead of opposite, gas exchange would stop as soon as their concentrations equalized. Counterflow is what keeps the gradient, and the diffusion, going the whole way through.</p>
+    <p>This project takes that same counterflow-diffusion principle and asks what a human-scale version would need to look like: a system that mimics artificial fish gills closely enough to extract dissolved oxygen from surrounding water and deliver it directly to deoxygenated blood, skipping the gas phase (and the tank) entirely.</p>
+  </section>
 
-      <p align="left" style="color:black; font-family: Courier Prime;"></br><br>
-        <strong>Abstract</strong> — Conventionally large metal oxygen tanks weighing
-        tens of kilograms are used as apparatus for breathing
-        underwater which decreases the diving time and restricts us
-        from exploring the deeper parts of the sea for a longer period
-        of time. Considering this thesis, this particular research
-        develops an underwater breathing system which is designed
-        based on fish gills. This approach uses the principle of
-        counterflow diffusion to extract dissolved oxygen from
-        surrounding water and supply it directly to the deoxygenated
-        blood coming from the body, eliminating the gas phase in
-        between. A hypothetical system is developed based on the
-        solution provided below. This paper specifically deals with the
-        concept and the mathematical formulations of the phenomena
-        that would be used in the development of this device.
-        <br>
-        <strong>Keywords</strong> — Mass Transfer, Fick’s Law, Counter-Flow
-        Diffusion, Underwater Breathing, Artificial Fish Gills, Knudsen
-        flow.
-      <br><br><br>
-      <strong>Introduction</strong><br><br>
-        The current methods for breathing underwater uses old
-        conventional designs which greatly reduce our productivity.
-        Existing conventional methods of breathing underwater can
-        be divided into two types: Oxygen tanks and surface
-        supplied method. These methods have some limitations like
-        less diving time and large weight. Development of new
-        methods of underwater breathing is therefore required.
-        The Oxygen present in atmosphere gets dissolved in water
-        because of the its partial pressure [1] which can be used for
-        breathing underwater. To extract this oxygen, diffusion
-        process is used. Diffusion is mass transfer phenomenon
-        which induces the flow of mass due to concentration
-        difference. The proposed system uses this very principle for
-        exchange of gases between blood and water.
-        The contents of our research are distributed in the paper as
-        follows: Section I describes introduction, Section II
-        describes the core concept, Section III deals with the
-        mathematical model, Section IV explains the design aspects
-        of the device, Section V describes our hypothetical setup,
-        Section VI sheds light on our future plans for the device.
-      
-      <br><br><br>
-      <strong>Core Concept</strong><br><br>
-        Our system closely mimics the natural structure of fish gills.
-        fish uses the phenomena of counterflow diffusion to absorb
-        oxygen from surrounding water; water flows over the gills and 
-        passes through the structure called primary lamellae [2],
-        which consists of sub-structures called secondary lamellae,
-        this is where the diffusion happens. The concentration of
-        oxygen and carbon dioxide [3][4] dissolved in water
-        depends upon the partial pressure gradient of gases between
-        water and atmosphere. Now as the blood and water move in
-        counter current direction in the gills; blood in lamellae and
-        water over it, a partial pressure gradient exist between the
-        deoxygenated blood and oxygen rich water. This results in
-        the diffusion of oxygen into the blood from water. Carbon
-        dioxide on the other hand diffuses from blood into the water
-        because of its high concentration in blood as compared to
-        water [5]. This is how a fish gill works.
-        The countercurrent flow of blood and water has a reason.
-        Suppose if the blood in the gills and water around it moved
-        in the same direction in the fish gills, that is if they flowed
-        parallel to each other, then the gas exchange occurs until
-        their concentration became equal, since after that no partial
-        pressure gradient exists, no diffusion occurs.
-      </p>
-      <a href=""><img src="assets/breathingsys_1.png" style="border:1px solid black; height:70%; width: 37.5%;"/></a>
+  <section class="story">
+    <h2>The math behind it</h2>
+    <p>The exchange is governed by Fick's Law: the rate of diffusion of a gas through a membrane depends on the partial pressure gradient across it and the surface area available for exchange.</p>
+    <div class="spec-grid" style="grid-template-columns:1fr;">
+      <div class="spec-card">
+        <h4>Fick's Law</h4>
+        <p>R = D·A·(δP/δx), where D is the diffusion coefficient, A is the surface area of gas exchange, δP is the partial pressure gradient, and x is the distance along the direction of diffusion.</p>
+      </div>
+    </div>
+    <img class="story-media" src="assets/breathingsys_2.png" alt="Fick's law diffusion diagram for the breathing system">
+    <p class="media-cap">Partial pressure gradient driving oxygen into blood, carbon dioxide out</p>
+    <p>Sizing the exchange tubes comes down to the same tradeoff in every diffusion system: longer tubes mean more exchange surface, but only up to the point where the blood saturates, after which the extra length just adds drag with no added oxygen. In human lungs, the oxygen-saturation curve along that gradient is sigmoidal; fitting the same curve to this system is what would set the actual tube length for the device, rather than picking one arbitrarily.</p>
+    <img class="story-media" src="assets/breathingsys_4.png" alt="Tube length and saturation design diagram">
+    <p class="media-cap">Saturation-driven tube length: where the curve here levels off</p>
+  </section>
 
-      <p align="left" style="color:black; font-family: Courier Prime;"></br><br>
-        Gas exchange in fish gills is based on the principle called
-        Counterflow Diffusion.
-        In the figure below a single element of gas exchange surface
-        of a fish gill is shown, water and blood flow in
-        countercurrent directions. Due to a positive partial pressure
-        gradient of oxygen between water and blood (as indicated
-        by representative values), oxygen diffuses into the blood.
-        Carbon dioxide on the
-        other hand diffuses from blood to water because of its
-        positive partial pressure gradient between blood and water.
-        The principle which drives the exchange of gases between
-        the membrane and also governs the workings of fish gills is
-        called the Fick’s law [6]. Fick’s law can be stated as “Rate
-        of diffusion of oxygen and carbon dioxide through the
-        membrane depends on the partial pressure gradient along the
-        membrane and the area of gas exchange”.<br><br>
-      </p>
-      <a href=""><img src="assets/breathingsys_2.png" style="border:1px solid black; height:70%; width: 37.5%;"/></a>
-      <p align="left" style="color:black; font-family: Courier Prime;"></br><br>      
-        Mathematically, Rate of Diffusion (R)<br><br>
-        $$ R = {D}{A}\frac{\delta{P}}{\delta{x}}$$<br>
-        Where,<br><br>
-        ${D}$ : is the diffusion coefficient,<br>
-        ${A}$ : is the surface area of gas exchange,<br>
-        ${\delta{P}}$ : is partial pressure gradient of gas,<br>
-        ${x}$ : is the distance in the direction of diffusion of a gas <br><br>
-        Prasoon kumar et al. carried out a computational study of
-        diffusion phenomenon occurring in fish using a twodimensional model of a secondary lamellae in COMSOL
-        [7], the governing equations they determined in each domain
-        are
-      </p>  
-      <p align="left" style="color:black; font-family: Courier Prime;"></br><br>
-      $${U_w}\frac{\delta{C}}{\delta{x}} = {D_w}(\frac{\delta^2{C}}{\delta{x^2}} + \frac{\delta^2{C}}{\delta{y^2}})$$ ... Water Domain <br>
-      $${U_b}\frac{\delta{C}}{\delta{x}} = {D_b}(\frac{\delta^2{C}}{\delta{x^2}} + \frac{\delta^2{C}}{\delta{y^2}})$$ ... Blood Domain <br>
-      $${D_e}\frac{\delta^2{C}}{\delta{y^2}} = 0$$ ... Epithelial Barrier <br>
-      $${N} = -{D}\frac{\delta{C}}{\delta{x}} + {U_x}{C}$$<br><br>
-      Where,<br><br>
-      ${U_w}$ = Average velocity in water channel,<br>
-      $U_b$ = Average velocity in blood channel,<br>
-      $D_w$ = Diffusion coefficient of oxygen in water,<br>
-      $D_b$ = Diffusion coefficient of oxygen in blood,<br>
-      $D_e$ = Diffusion coefficient of oxygen in epithelial matrix,<br>
-      $C$ = Concentration of oxygen,<br>
-      $N$ = Flux.
-      <br><br>
-      This model can easily be extrapolated to be applied to
-      humans by inserting appropriate boundary conditions.
-      </p>
-      <p align="left" style="color:black; font-family: Courier Prime;"><strong>Design</strong></br><br>
-      <strong>A. Length of Tubes</strong><br><br>
-      This parameter depends only on the partial pressure gradient
-      of the gases that are exchanged through the membrane. With
-      the increase in the length of the tube in the direction of flow
-      of water, the concentration of oxygen in blood increases and
-      saturation occurs. Thus, rendering the remaining length
-      useless. A specific tube length is hence selected based on
-      above phenomenon.
-      In human lungs, the curve that depicts the increase in
-      concentration of oxygen in blood along the oxygen gradient
-      rise is sigmoidal in nature [8].
-      Fitting the same curve along the length of breathing device
-      gives the point of saturation of oxygen in blood and hence
-      the length of the membrane tubes.
-      </p>      
-      <a href=""><img src="assets/breathingsys_4.png" style="border:1px solid black; height:70%; width: 37.5%;"/></a>
-      <br><br>
-      <p2 align="left" style="color:black; font-family: Courier Prime;"><strong>WIP</strong></br><br></p2>
+  <section class="story">
+    <h2>Where it stands</h2>
+    <p><strong>This project stopped at the concept and mathematical-formulation stage.</strong> The core diffusion model, the Fick's-law-based sizing approach, and the design rationale for tube length are worked out, but the airflow analysis needed to turn this into an actual device was never finished, and nothing was ever built or tested. I'm leaving that honestly unresolved rather than dressing it up as further along than it is: the open work is the fluid-dynamics side of the design, followed by a bench-scale proof of concept for the exchange membrane itself.</p>
+  </section>
 
-    </center>
-   </section>
-    
-   <section id ="references">
-     <center>
+  <div class="related">
+    <a href="works.html"><span class="rlabel">Works</span> All Projects</a>
+    <a href="ideas.html"><span class="rlabel">Tinkerings</span> Half-Baked Ideas</a>
+    <a href="mailto:sanghavipruthvi@gmail.com"><span class="rlabel">Contact</span> Ask About This Project</a>
+  </div>
 
-     </center>
-   </section>
-<hr>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-links">
+      <a href="mailto:sanghavipruthvi@gmail.com">sanghavipruthvi@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pruthvi-sanghavi/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Pruthvi-Sanghavi" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="foot-note">Pasadena, CA · rev 2026.07</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
 </body>
- </html>
+</html>
