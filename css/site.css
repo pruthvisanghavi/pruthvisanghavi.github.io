@@ -11,7 +11,7 @@ html[data-theme="light"]{
 html{background:var(--bg); transition:background .2s ease;}
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased;}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-x:hidden;}
 a{color:inherit;}
 ::selection{background:var(--accent); color:#fff;}
 .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
