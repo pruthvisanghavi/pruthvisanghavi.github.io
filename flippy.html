@@ -18,6 +18,15 @@
   .kicker{letter-spacing:.1em; margin:0 0 10px;}
   h1{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 14px;}
   .lede{font-size:17px; max-width:64ch; margin:0 0 26px;}
+
+  /* ===== IMPACT STRIP ===== */
+  .impact-strip{display:flex; flex-wrap:wrap; gap:12px; margin:0 0 8px;}
+  .impact-chip{border:1px solid var(--line); border-left:3px solid var(--sec, var(--accent)); border-radius:12px; padding:12px 18px; min-width:120px; background:color-mix(in srgb, var(--sec, var(--accent)) 6%, transparent);}
+  .impact-chip .n{font-family:var(--display); font-weight:800; font-size:22px; color:var(--sec, var(--ink)); line-height:1.1;}
+  .impact-chip .l{font-size:11.5px; color:var(--muted); margin-top:4px; line-height:1.4;}
+  .story blockquote{font-size:15px; font-style:italic; color:var(--ink); border-left:2px solid var(--sec, var(--accent)); padding:2px 0 2px 18px; margin:20px 0;}
+  .story[style*="--sec"] h2{color:var(--sec);}
+  .story-tag{display:inline-block; font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:700; color:var(--sec, var(--accent)); border:1px solid var(--sec, var(--accent)); border-radius:100px; padding:4px 12px; margin:0 0 14px;}
 </style>
 </head>
 <body>
@@ -74,7 +83,90 @@
     </div>
   </section>
 
-  <section class="story">
+  <section class="story" style="--sec:#C4703F;">
+    <span class="story-tag">Fleet Reliability</span>
+    <h2>Fleet reliability: from scattered theories to one fault tree</h2>
+    <p>Robots across the deployed fleet were stopping with inconsistent symptoms, and every team had a different theory about why. There was no shared causal model, no tooling to build one, and a roadmap that was scattered relative to what was actually causing failures in the field.</p>
+    <p>I built a fault tree from scratch and manually worked through a month's worth of data, roughly 300 incidents, categorizing each one by evidence rather than hypothesis. The step that mattered most was mapping each of the resulting root causes directly onto the existing roadmap: it showed which planned efforts were addressing symptoms and which were addressing causes. That reframed the conversation from "everyone is working on the problem" to "we're not working on the right things."</p>
+    <div class="impact-strip">
+      <div class="impact-chip"><div class="n">70×</div><div class="l">MTBF improvement from the first reordered fix</div></div>
+      <div class="impact-chip"><div class="n">300</div><div class="l">incidents manually categorized</div></div>
+      <div class="impact-chip"><div class="n">1 → 70</div><div class="l">days between failures</div></div>
+      <div class="impact-chip"><div class="n">3</div><div class="l">root causes isolated</div></div>
+    </div>
+    <p>The remaining two root causes stayed on the roadmap, sequenced by impact. The fault tree itself outlived the specific fix — it's now how the org approaches fleet reliability.</p>
+  </section>
+
+  <section class="story" style="--sec:#2b8ee6;">
+    <span class="story-tag">Agent 0</span>
+    <h2>Impact Jam: shipping Agent 0 in a day</h2>
+    <p>Momentum was the real bottleneck. Planning cycles were long, good ideas were dying in design review, and there was no forum for an engineer to build and ship something quickly without first navigating approval overhead.</p>
+    <p>I had no authority to mandate faster shipping, so instead of asking for it I posted an open call across every team on Slack: no mandate, no manager sign-off required to show up. Whoever felt pulled in came in on a Saturday. The self-selection was deliberate — it meant the energy in the room was real rather than compliance. One hour of scoping, five hours of building, and we shipped Agent 0: an automated fault-recovery pipeline that replaced a human-in-the-loop intervention step, taking recovery time from minutes to seconds.</p>
+    <div class="impact-strip">
+      <div class="impact-chip"><div class="n">5 → 8</div><div class="l">fleet NPS within a week of deployment</div></div>
+      <div class="impact-chip"><div class="n">6 hrs</div><div class="l">from scoping to deployed build</div></div>
+      <div class="impact-chip"><div class="n">min → sec</div><div class="l">fault recovery time</div></div>
+    </div>
+    <p>Other teams ran their own recovery pipelines the following week without any further prompting, and the format itself, an open, opt-in build day, has stuck around as a repeatable way the org creates momentum on its own.</p>
+  </section>
+
+  <section class="story" style="--sec:#5A9BB0;">
+    <span class="story-tag">Yaskawa Jitter</span>
+    <h2>Hardware-software boundary: the Yaskawa jitter</h2>
+    <p>A new 7th-axis robot deployment was showing persistent motion jitter, surfacing as excessive segment errors on the Yaskawa controller. It was customer-facing, with no clear path to resolution — even after escalating to Yaskawa's own technical team, who found nothing.</p>
+    <p>I picked up the investigation with a fishbone diagram to systematically generate every plausible cause category, including a hardware mismatch as one hypothesis. That hypothesis led to pulling the physical bill of materials and comparing it against the controller's parameterized mechanical model. The new gearbox variant had a different ratio than the original, but the controller's motion planner was still parameterized to the old one — it was planning trajectories against a mechanical model that no longer matched what was actually deployed. I confirmed the motor's rated RPM ceiling had headroom for the corrected parameters, fixed the gear ratio, and updated the ceiling.</p>
+    <blockquote>The bug wasn't in the software, and it wasn't in the hardware. It was at the boundary between the controller's model and the physical reality it was controlling.</blockquote>
+    <div class="impact-strip">
+      <div class="impact-chip"><div class="n">0</div><div class="l">jitter after the fix</div></div>
+      <div class="impact-chip"><div class="n">1</div><div class="l">deployment checklist preventing recurrence</div></div>
+    </div>
+    <p>Beyond the fix, I documented a deployment checklist requiring that any hardware variant change trigger verification of the controller's mechanical model against the deployed BOM — closing off the whole class of issue, not just this instance.</p>
+  </section>
+
+  <section class="story" style="--sec:#cb7d0f;">
+    <span class="story-tag">Stadium Thermal</span>
+    <h2>Stadium deployment: engineering around a thermal limit</h2>
+    <p>A stadium deployment saw extreme peak demand during events. The elevator motor was hitting an 83°C hard shutdown right at halftime, the highest-demand period, requiring a manual reboot every time. The site's infrastructure fix wasn't going to land on our timeline.</p>
+    <p>I ran three tracks in parallel rather than sequentially: confirmed with the motor manufacturer that 93°C was within spec and preserved warranty, giving safe headroom above the original threshold; built a test bench that enclosed the motor in a thermal casing to validate new thresholds before touching production; and wrote a soft-shutdown pipeline over a weekend, with a graceful shutdown at 88°C and autonomous recovery at 80°C. The 8°C hysteresis gap was a deliberate choice — without it, the system would cycle rapidly between shutdown and recovery under sustained load, which is worse than either state alone.</p>
+    <div class="impact-strip">
+      <div class="impact-chip"><div class="n">15/15</div><div class="l">events with zero manual reboots</div></div>
+      <div class="impact-chip"><div class="n">88°C</div><div class="l">graceful shutdown threshold</div></div>
+      <div class="impact-chip"><div class="n">8°C</div><div class="l">hysteresis gap</div></div>
+      <div class="impact-chip"><div class="n">72 hrs</div><div class="l">weekend build to Monday deploy</div></div>
+    </div>
+    <p>The site-side infrastructure fix is still pending, but operations no longer depend on it. The system is resilient to the environment rather than merely tolerant of it.</p>
+  </section>
+
+  <section class="story" style="--sec:#3F6B33;">
+    <span class="story-tag">Test Infrastructure</span>
+    <h2>Automated test infrastructure for a fast-moving system</h2>
+    <p>With significant changes landing every week, the 200-case regression suite took a full week to run on hardware — a week of dead time every release cycle. The failures I was most worried about weren't crashes; they were silent, timing-dependent failures that only surface under precise sequences of events, exactly what manual testing structurally misses.</p>
+    <p>I built the test infrastructure from scratch, with one constraint above raw speed: it had to be something the whole team could trust, extend, and run without me. About 40% of cases had real hardware dependencies (sensor behavior, actuator response under load) that I deliberately left on hardware rather than simulate — automating those would have bought false confidence, not real coverage. The other 60% (scheduler logic, state-machine behavior, UI flows) I automated with pytest, rostest, and Playwright, built around clear interfaces so other engineers could add tests without asking me.</p>
+    <p>The suite's most significant catch was a scheduler bug: if the elevator or dispenser shut down at a precise moment during dispense-sequence preplanning, the system entered a silent infinite loop — no crash, no error, just stalled progress. A human tester would need to hit an exact timing window to see it; the automated test reproduced it on every run.</p>
+    <div class="impact-strip">
+      <div class="impact-chip"><div class="n">5×</div><div class="l">faster regression cycle (1 week → 2 days)</div></div>
+      <div class="impact-chip"><div class="n">60%</div><div class="l">of cases fully automated, by design</div></div>
+      <div class="impact-chip"><div class="n">∞ loop</div><div class="l">silent scheduler bug caught pre-production</div></div>
+    </div>
+    <p>Other engineers have since extended the framework on their own — it became team infrastructure, not a personal tool.</p>
+  </section>
+
+  <section class="story" style="--sec:#8A4A68;">
+    <span class="story-tag">HITL Debug</span>
+    <h2>Debugging an intermittent HITL failure down to optics</h2>
+    <p>Our automated hardware-in-the-loop suite flagged a candidate release over a weekend: a fryer behavior node was failing to plan and timing out. The failure only reproduced about 5% of the time, which meant I couldn't just rerun it and watch the bug appear — I had to gather signal deliberately before forming any hypothesis.</p>
+    <p>I worked it in four phases. First, quantified rather than guessed: running the node in isolation 20 times caught the failure once, confirming the roughly-5% rate and telling me I needed instrumentation, not more reruns. Second, instrumented the pose estimation topic directly and saw fryer poses arriving out of bounds. Third, traced it to outlier rejection silently dropping a bad detection instead of padding the array, leaving the pose array one element short and causing a matrix shape mismatch downstream. Fourth, pushed the "why" past the software layer: the failure was intermittent and lighting-correlated, worse at night, which pointed to a physical rather than a code cause. The ArUco marker wasn't oriented normal to the IR LED, so almost no light was reflecting back to the sensor.</p>
+    <p>I applied two fixes rather than one: a hardware fix (increased illumination, marker reoriented normal to the IR LED) addressing the root cause, and a software guard (bounds and dimension check ahead of the matrix comparison) so a degraded detection can never again cascade into a planning timeout, regardless of cause.</p>
+    <div class="impact-strip">
+      <div class="impact-chip"><div class="n">1 wknd</div><div class="l">from detection to validated fix</div></div>
+      <div class="impact-chip"><div class="n">5%</div><div class="l">intermittent failure rate</div></div>
+      <div class="impact-chip"><div class="n">2-layer</div><div class="l">fix: hardware root cause + software guard</div></div>
+    </div>
+    <p>The HITL test that caught it was promoted to a permanent regression gate, so the failure mode is now caught automatically if it ever reappears.</p>
+  </section>
+
+  <section class="story" style="--sec:#9400a5;">
+    <span class="story-tag">Functional Safety</span>
     <h2>Functional safety</h2>
     <p>A robot working alongside people in a commercial kitchen has to clear a real safety bar, not just a performance one. That side of the role covers hazard analysis and risk assessment carried through to certification, most recently achieving Performance Level d under ISO 10218, the standard covering safety requirements for industrial robots working near people.</p>
   </section>
