@@ -3,8 +3,8 @@ import * as THREE from 'three';
 var stage = document.getElementById('quadStage');
 if (stage) {
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ROBOT_PX = 72;
-  var MIN_GUTTER = ROBOT_PX + 20;
+  var ROBOT_PX = 130;      // rendered footprint at the scale set below, used for edge clearance
+  var FOOT_LIFT_PX = 15;   // the model's local origin sits slightly above its feet; nudge target up so feet land on the line
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -44,7 +44,7 @@ if (stage) {
   }
 
   var walker = new THREE.Group();
-  walker.scale.setScalar(0.095);
+  walker.scale.setScalar(0.16);
   scene.add(walker);
 
   var body = new THREE.Group();
@@ -128,41 +128,26 @@ if (stage) {
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   }, { passive: true });
 
-  // --- find the empty side gutter and pace back and forth *across* it (horizontal,
-  //     so translation matches the leg-swing axis instead of fighting it) ---
-  var laneSide = null;
+  // --- walk the horizontal divider line between the page body and the footer.
+  //     feet land on that line; the body stands in the whitespace above it. ---
+  var footerEl = document.querySelector('footer');
+  var footerWrapEl = footerEl ? footerEl.querySelector('.wrap') : null;
+  var laneReady = false;
   var laneY = 0;
   var paceMinPx = 0, paceMaxPx = 0;
 
   function recomputeLane() {
-    var wraps = document.querySelectorAll('.wrap');
-    var contentLeft = Infinity, contentRight = -Infinity;
-    wraps.forEach(function (w) {
-      var r = w.getBoundingClientRect();
-      if (r.width === 0) return;
-      contentLeft = Math.min(contentLeft, r.left);
-      contentRight = Math.max(contentRight, r.right);
-    });
-    if (!isFinite(contentLeft)) { laneSide = null; return; }
+    if (!footerEl || !footerWrapEl) { laneReady = false; return; }
+    var fr = footerEl.getBoundingClientRect();
+    var wr = footerWrapEl.getBoundingClientRect();
+    if (wr.width === 0) { laneReady = false; return; }
 
-    var margin = 14;
+    laneY = fr.top; // the border-top divider line
+    var margin = 18;
     var half = ROBOT_PX / 2;
-    var rightGutter = window.innerWidth - contentRight;
-    var leftGutter = contentLeft;
-
-    if (rightGutter >= MIN_GUTTER) {
-      laneSide = 'right';
-      paceMinPx = contentRight + margin + half;
-      paceMaxPx = window.innerWidth - margin - half;
-    } else if (leftGutter >= MIN_GUTTER) {
-      laneSide = 'left';
-      paceMinPx = margin + half;
-      paceMaxPx = contentLeft - margin - half;
-    } else {
-      laneSide = null;
-    }
-    if (paceMaxPx < paceMinPx) paceMaxPx = paceMinPx;
-    laneY = clamp(window.innerHeight * 0.42, 140, window.innerHeight - 120);
+    paceMinPx = wr.left + margin + half;
+    paceMaxPx = wr.right - margin - half;
+    laneReady = paceMaxPx > paceMinPx;
   }
 
   function pxToWorld(px, py, out) {
@@ -191,20 +176,22 @@ if (stage) {
   window.addEventListener('resize', onResize, { passive: true });
   window.addEventListener('scroll', recomputeLane, { passive: true });
 
-  var ro = new ResizeObserver(recomputeLane);
-  document.querySelectorAll('.wrap').forEach(function (w) { ro.observe(w); });
+  if (footerWrapEl) {
+    var ro = new ResizeObserver(recomputeLane);
+    ro.observe(footerWrapEl);
+  }
 
   recomputeLane();
 
-  // --- patrol state: pace left/right across the gutter, trot gait matching travel axis ---
+  // --- patrol state: pace left/right along the divider line, trot gait matching travel axis ---
   var patrolX = (paceMinPx + paceMaxPx) / 2;
   var travelDir = 1;
-  var WALK_SPEED_PX = 30; // px/sec
+  var WALK_SPEED_PX = 36; // px/sec
   var gaitPhase = 0;
 
   var targetWorld = new THREE.Vector3();
   var initWorld = new THREE.Vector3();
-  pxToWorld(patrolX, laneY, initWorld);
+  pxToWorld(patrolX, laneY - FOOT_LIFT_PX, initWorld);
   var curWorldX = initWorld.x, curWorldY = initWorld.y;
 
   function shortestAngleLerp(a, b, t) {
@@ -226,9 +213,10 @@ if (stage) {
     var dt = Math.min(0.05, t - prevT || 0);
     prevT = t;
 
-    if (t - lastLaneCheck > 0.5) { recomputeLane(); lastLaneCheck = t; }
+    if (t - lastLaneCheck > 0.25) { recomputeLane(); lastLaneCheck = t; }
 
-    if (laneSide === null) {
+    var onScreen = laneY > -100 && laneY < window.innerHeight + 100;
+    if (!laneReady || !onScreen) {
       if (stage.classList.contains('is-visible')) stage.classList.remove('is-visible');
       renderer.render(scene, camera);
       return;
@@ -242,7 +230,7 @@ if (stage) {
       gaitPhase += dt * 6.4;
     }
 
-    pxToWorld(patrolX, laneY, targetWorld);
+    pxToWorld(patrolX, laneY - FOOT_LIFT_PX, targetWorld);
     curWorldX = lerp(curWorldX, targetWorld.x, reduceMotion ? 1 : 0.2);
     curWorldY = lerp(curWorldY, targetWorld.y, reduceMotion ? 1 : 0.2);
     walker.position.x = curWorldX;
