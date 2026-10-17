@@ -242,9 +242,18 @@
   .rec-who{margin:0; font-size:14px; font-weight:600; color:var(--ink);}
   .rec-role{margin:2px 0 0; font-size:13px; color:var(--muted);}
   @media (max-width:760px){ .recs-grid{grid-template-columns:1fr;} }
+
+  /* ===== QUADRUPED (roams the empty page gutters) ===== */
+  #quadStage{
+    position:fixed; inset:0; width:100vw; height:100vh; pointer-events:none; z-index:3;
+    opacity:0; transition:opacity .4s ease;
+  }
+  #quadStage.is-visible{opacity:1;}
+  #quadStage canvas{display:block; width:100%; height:100%;}
 </style>
 </head>
 <body>
+<div id="quadStage" aria-hidden="true"></div>
 
 <header>
   <nav class="nav wrap" id="nav">
@@ -628,6 +637,11 @@
     el.addEventListener('animationend', function(){ el.classList.remove('reveal-enter'); }, {once:true});
   });
 </script>
+
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module" src="js/quadruped.js"></script>
 
 </body>
 </html>
