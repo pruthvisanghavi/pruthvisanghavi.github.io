@@ -3,8 +3,8 @@ import * as THREE from 'three';
 var stage = document.getElementById('quadStage');
 if (stage) {
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ROBOT_PX = 120;
-  var MIN_GUTTER = ROBOT_PX + 60;
+  var ROBOT_PX = 64;
+  var MIN_GUTTER = ROBOT_PX + 24;
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -44,7 +44,7 @@ if (stage) {
   }
 
   var walker = new THREE.Group();
-  walker.scale.setScalar(0.24);
+  walker.scale.setScalar(0.14);
   scene.add(walker);
 
   var body = new THREE.Group();
@@ -144,7 +144,7 @@ if (stage) {
     });
     if (!isFinite(contentLeft)) { laneSide = null; return; }
 
-    var margin = 24;
+    var margin = 12;
     var rightGutter = window.innerWidth - contentRight;
     var leftGutter = contentLeft;
 
