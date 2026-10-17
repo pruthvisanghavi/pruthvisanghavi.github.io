@@ -3,8 +3,8 @@ import * as THREE from 'three';
 var stage = document.getElementById('quadStage');
 if (stage) {
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ROBOT_PX = 64;
-  var MIN_GUTTER = ROBOT_PX + 24;
+  var ROBOT_PX = 72;
+  var MIN_GUTTER = ROBOT_PX + 20;
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -44,7 +44,7 @@ if (stage) {
   }
 
   var walker = new THREE.Group();
-  walker.scale.setScalar(0.14);
+  walker.scale.setScalar(0.095);
   scene.add(walker);
 
   var body = new THREE.Group();
@@ -128,10 +128,11 @@ if (stage) {
     mouseY = (e.clientY / window.innerHeight) * 2 - 1;
   }, { passive: true });
 
-  // --- find the empty side gutter to patrol in ---
+  // --- find the empty side gutter and pace back and forth *across* it (horizontal,
+  //     so translation matches the leg-swing axis instead of fighting it) ---
   var laneSide = null;
-  var laneCenterPx = 0;
-  var laneTopPx = 90, laneBottomPx = window.innerHeight - 50;
+  var laneY = 0;
+  var paceMinPx = 0, paceMaxPx = 0;
 
   function recomputeLane() {
     var wraps = document.querySelectorAll('.wrap');
@@ -144,21 +145,24 @@ if (stage) {
     });
     if (!isFinite(contentLeft)) { laneSide = null; return; }
 
-    var margin = 12;
+    var margin = 14;
+    var half = ROBOT_PX / 2;
     var rightGutter = window.innerWidth - contentRight;
     var leftGutter = contentLeft;
 
     if (rightGutter >= MIN_GUTTER) {
       laneSide = 'right';
-      laneCenterPx = contentRight + margin + (rightGutter - margin - ROBOT_PX / 2) / 2;
+      paceMinPx = contentRight + margin + half;
+      paceMaxPx = window.innerWidth - margin - half;
     } else if (leftGutter >= MIN_GUTTER) {
       laneSide = 'left';
-      laneCenterPx = (leftGutter - margin - ROBOT_PX / 2) / 2;
+      paceMinPx = margin + half;
+      paceMaxPx = contentLeft - margin - half;
     } else {
       laneSide = null;
     }
-    laneTopPx = 90;
-    laneBottomPx = window.innerHeight - 50;
+    if (paceMaxPx < paceMinPx) paceMaxPx = paceMinPx;
+    laneY = clamp(window.innerHeight * 0.42, 140, window.innerHeight - 120);
   }
 
   function pxToWorld(px, py, out) {
@@ -192,19 +196,26 @@ if (stage) {
 
   recomputeLane();
 
-  // --- patrol state: walk up/down the lane, trot gait, lean into travel direction ---
-  var patrolY = (laneTopPx + laneBottomPx) / 2;
+  // --- patrol state: pace left/right across the gutter, trot gait matching travel axis ---
+  var patrolX = (paceMinPx + paceMaxPx) / 2;
   var travelDir = 1;
-  var WALK_SPEED_PX = 26; // px/sec
+  var WALK_SPEED_PX = 30; // px/sec
   var gaitPhase = 0;
 
   var targetWorld = new THREE.Vector3();
-  var curWorldX = 0, curWorldY = 0;
+  var initWorld = new THREE.Vector3();
+  pxToWorld(patrolX, laneY, initWorld);
+  var curWorldX = initWorld.x, curWorldY = initWorld.y;
 
-  var BODY_MAX_YAW = 0.18;
+  function shortestAngleLerp(a, b, t) {
+    var diff = ((b - a + Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2) - Math.PI;
+    return a + diff * t;
+  }
+
   var HEAD_MAX_YAW = 0.5;
   var HEAD_MAX_PITCH = 0.28;
-  var curBodyYaw = 0, curHeadYaw = 0, curHeadPitch = 0, curLean = 0;
+  var MOUSE_LOOK_MAX = 0.22;
+  var curFacingYaw = 0, curHeadYaw = 0, curHeadPitch = 0, curRoll = 0;
 
   var clock = new THREE.Clock();
   var lastLaneCheck = 0;
@@ -225,47 +236,48 @@ if (stage) {
     if (!stage.classList.contains('is-visible')) stage.classList.add('is-visible');
 
     if (!reduceMotion) {
-      patrolY += travelDir * WALK_SPEED_PX * dt;
-      if (patrolY > laneBottomPx) { patrolY = laneBottomPx; travelDir = -1; }
-      if (patrolY < laneTopPx) { patrolY = laneTopPx; travelDir = 1; }
+      patrolX += travelDir * WALK_SPEED_PX * dt;
+      if (patrolX > paceMaxPx) { patrolX = paceMaxPx; travelDir = -1; }
+      if (patrolX < paceMinPx) { patrolX = paceMinPx; travelDir = 1; }
       gaitPhase += dt * 6.4;
     }
 
-    pxToWorld(laneCenterPx, patrolY, targetWorld);
-    curWorldX = lerp(curWorldX, targetWorld.x, reduceMotion ? 1 : 0.15);
-    curWorldY = lerp(curWorldY, targetWorld.y, reduceMotion ? 1 : 0.15);
+    pxToWorld(patrolX, laneY, targetWorld);
+    curWorldX = lerp(curWorldX, targetWorld.x, reduceMotion ? 1 : 0.2);
+    curWorldY = lerp(curWorldY, targetWorld.y, reduceMotion ? 1 : 0.2);
     walker.position.x = curWorldX;
     walker.position.z = targetWorld.z;
-    walker.position.y = curWorldY + (reduceMotion ? 0 : Math.sin(gaitPhase * 2) * 0.012);
-
-    var faceOut = laneSide === 'right' ? 1 : -1;
+    walker.position.y = curWorldY + (reduceMotion ? 0 : Math.abs(Math.sin(gaitPhase)) * 0.012);
 
     if (!reduceMotion) {
       legs.forEach(function (leg, i) {
         var pairOffset = (i === 0 || i === 3) ? 0 : Math.PI;
         var swing = Math.sin(gaitPhase + pairOffset);
-        leg.hip.rotation.z = (leg.spec.x > 0 ? 0.08 : -0.08) + swing * 0.3 * travelDir;
+        leg.hip.rotation.z = (leg.spec.x > 0 ? 0.08 : -0.08) + swing * 0.32 * travelDir;
         var lift = Math.max(0, -swing * travelDir);
         leg.knee.rotation.z = (leg.spec.x > 0 ? -0.22 : 0.22) - lift * 0.35;
       });
+      curRoll = Math.sin(gaitPhase * 2) * 0.025;
     }
+    body.rotation.z = curRoll;
 
-    curLean = lerp(curLean, travelDir * 0.07, reduceMotion ? 1 : 0.08);
-    body.rotation.x = curLean;
+    // face the direction of travel (model's rest pose faces +X), then layer the
+    // cursor-look on top without fighting the walk-direction flip at the pace ends
+    var localMouseX = clamp((mousePxX - patrolX) / 260, -1, 1);
+    var localMouseY = clamp((mousePxY - laneY) / 260, -1, 1);
 
-    var localMouseX = clamp((mousePxX - laneCenterPx) / 260, -1, 1);
-    var localMouseY = clamp((mousePxY - patrolY) / 260, -1, 1);
-
-    var targetBodyYaw = faceOut * Math.PI * 0.09 + clamp(localMouseX * BODY_MAX_YAW, -BODY_MAX_YAW, BODY_MAX_YAW);
+    var travelFacing = travelDir >= 0 ? 0 : Math.PI;
+    var lookOffset = clamp(localMouseX * MOUSE_LOOK_MAX, -MOUSE_LOOK_MAX, MOUSE_LOOK_MAX) * travelDir;
+    var targetFacingYaw = travelFacing + lookOffset;
     var targetHeadYaw = clamp(localMouseX * HEAD_MAX_YAW, -HEAD_MAX_YAW, HEAD_MAX_YAW);
     var targetHeadPitch = clamp(-localMouseY * HEAD_MAX_PITCH, -HEAD_MAX_PITCH, HEAD_MAX_PITCH);
 
-    var ease = reduceMotion ? 1 : 0.07;
-    curBodyYaw = lerp(curBodyYaw, targetBodyYaw, ease);
+    var ease = reduceMotion ? 1 : 0.1;
+    curFacingYaw = shortestAngleLerp(curFacingYaw, targetFacingYaw, reduceMotion ? 1 : 0.12);
     curHeadYaw = lerp(curHeadYaw, targetHeadYaw, ease);
     curHeadPitch = lerp(curHeadPitch, targetHeadPitch, ease);
 
-    walker.rotation.y = curBodyYaw;
+    walker.rotation.y = curFacingYaw;
     headPivot.rotation.y = curHeadYaw;
     headPivot.rotation.x = curHeadPitch;
 
