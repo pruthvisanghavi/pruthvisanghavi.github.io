@@ -100,19 +100,19 @@ if (stage) {
 
     var thighPivot = new THREE.Group();
     hip.add(thighPivot);
-    var thigh = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.038, 0.32, 8), chassisMat);
-    thigh.position.y = -0.16;
+    var thigh = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.033, 0.2, 8), chassisMat);
+    thigh.position.y = -0.1;
     thighPivot.add(thigh);
 
     var kneePivot = new THREE.Group();
-    kneePivot.position.y = -0.32;
+    kneePivot.position.y = -0.2;
     thighPivot.add(kneePivot);
-    var shin = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.022, 0.32, 8), jointMat);
-    shin.position.y = -0.16;
+    var shin = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.019, 0.2, 8), jointMat);
+    shin.position.y = -0.1;
     kneePivot.add(shin);
 
-    var foot = new THREE.Mesh(new THREE.SphereGeometry(0.045, 10, 10), footMat);
-    foot.position.y = -0.33;
+    var foot = new THREE.Mesh(new THREE.SphereGeometry(0.038, 10, 10), footMat);
+    foot.position.y = -0.21;
     kneePivot.add(foot);
 
     thighPivot.rotation.z = spec.x > 0 ? 0.08 : -0.08;
