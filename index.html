@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>@view-transition{navigation:auto;}</style>
-<title>Pruthvi Sanghavi | Systems Engineer, Robotics</title>
+<title>Pruthvi Sanghavi | Senior Software Engineer, Release Engineering</title>
 <link rel="icon" href="assets/profile_pic.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -213,6 +213,35 @@
   .pub-desc{font-size:15.5px; line-height:1.7; color:var(--muted); margin:0 0 10px; max-width:70ch;}
   .pub-link{display:inline-flex; align-items:center; gap:6px; font-size:14px; color:var(--accent); text-decoration:none; font-weight:500; border-bottom:1px solid transparent; transition:border-color .15s;}
   .pub-link:hover{border-color:var(--accent);}
+
+  /* ===== RECOMMENDATIONS ===== */
+  .recs-section{padding-top:60px; padding-bottom:60px; border-top:1px solid var(--line);}
+  .recs-section h2{font-family:var(--display); font-weight:700; font-size:26px; margin:0 0 32px;}
+  .recs-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+  .rec-card{
+    display:flex; flex-direction:column; padding:28px; border:1px solid var(--line); border-radius:10px; background:var(--panel);
+    box-shadow:0 0 24px -4px rgba(61,209,111,.25); transition:box-shadow .25s ease, border-color .25s ease;
+  }
+  .rec-card:hover{box-shadow:0 0 36px -2px rgba(61,209,111,.45); border-color:var(--accent);}
+  .rec-quote{font-size:15.5px; line-height:1.75; color:var(--muted); margin:0 0 14px;}
+  .rec-lead::before{content:"\201C";}
+  .rec-rest .rec-quote:last-of-type::after{content:"\201D";}
+  .rec-body{flex:1;}
+  .rec-body:has(.rec-more:not([open])) .rec-lead{
+    display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .rec-more{margin:0 0 18px;}
+  .rec-more summary{
+    cursor:pointer; list-style:none; font-size:13.5px; font-weight:600; color:var(--accent);
+    margin-top:4px; -webkit-user-select:none; user-select:none;
+  }
+  .rec-more summary::-webkit-details-marker{display:none;}
+  .rec-more summary::after{content:"Read full recommendation \2193"; }
+  .rec-more[open] summary::after{content:"Show less \2191";}
+  .rec-more .rec-rest{margin-top:14px;}
+  .rec-who{margin:0; font-size:14px; font-weight:600; color:var(--ink);}
+  .rec-role{margin:2px 0 0; font-size:13px; color:var(--muted);}
+  @media (max-width:760px){ .recs-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -239,8 +268,8 @@
 
 <main>
   <section class="hero wrap">
-    <h1>Systems engineering for robots that work in the real world.</h1>
-    <p class="lede">I'm a systems engineer working on requirements, interfaces, and verification for autonomous robots that have to work outside the lab. Below is some of what I've built, broken, and fixed along the way.</p>
+    <h1>Release engineering and test infrastructure for robots that ship.</h1>
+    <p class="lede">I'm a senior software engineer leading release engineering at FieldAI, building the pipeline and test infrastructure that gets autonomous systems into the field reliably. Below is some of what I've built, broken, and fixed along the way.</p>
   </section>
 
   <section class="mosaic-section wrap">
@@ -359,12 +388,40 @@
       </div>
 
       <div class="work-row current">
+        <a class="work-link" href="works.html" aria-label="View FieldAI work">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+        <div class="work-col">
+          <p class="work-time">Aug 2026 &ndash; Present</p>
+          <p class="work-status">Current</p>
+        </div>
+        <div class="work-col">
+          <p class="work-company">FieldAI</p>
+          <p class="work-loc">&nbsp;</p>
+        </div>
+        <div class="work-col">
+          <div class="work-subrole">
+            <div class="work-subrole-head">
+              <p class="work-role-title">Senior Software Engineer, Release Engineering &amp; Test Infrastructure</p>
+              <p class="work-subrole-time">Aug 2026 &ndash; Present</p>
+            </div>
+            <p class="work-desc">Leading release engineering from the ground up: building the release pipeline, CI/CD, and test infrastructure that will take the function from zero to a repeatable, auditable process.</p>
+            <div class="work-pills">
+              <span class="work-pill">Release Engineering</span>
+              <span class="work-pill">CI/CD</span>
+              <span class="work-pill">Test Infrastructure</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-row">
         <a class="work-link" href="works.html" aria-label="View Miso Robotics work">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
         <div class="work-col">
-          <p class="work-time">Jul 2021 &ndash; Present</p>
-          <p class="work-status">Current</p>
+          <p class="work-time">Jul 2021 &ndash; Aug 2026</p>
+          <p class="work-status">~5 yrs</p>
         </div>
         <div class="work-col">
           <p class="work-company">Miso Robotics Inc.</p>
@@ -374,9 +431,9 @@
           <div class="work-subrole">
             <div class="work-subrole-head">
               <p class="work-role-title">Principal Systems Engineer</p>
-              <p class="work-subrole-time">Apr 2026 &ndash; Present</p>
+              <p class="work-subrole-time">Apr 2026 &ndash; Aug 2026</p>
             </div>
-            <p class="work-desc">Own the systems engineering roadmap: org-wide requirements management, V&amp;V planning, and release readiness aligned to the SDLC V-model, and represent systems engineering in executive and stakeholder reviews.</p>
+            <p class="work-desc">Owned the systems engineering roadmap: org-wide requirements management, V&amp;V planning, and release readiness aligned to the SDLC V-model, and represented systems engineering in executive and stakeholder reviews.</p>
             <div class="work-pills">
               <span class="work-pill">Systems Engineering Strategy</span>
               <span class="work-pill">V-Model</span>
@@ -439,17 +496,17 @@
         </div>
       </div>
     </div>
-    <p class="work-footnote">Total experience ~5 years in systems &amp; robotics engineering.</p>
+    <p class="work-footnote">Total experience ~5 years in systems, release engineering &amp; robotics.</p>
   </section>
 
   <section class="about-strip wrap">
     <div class="grid2">
       <div>
-        <h2>Systems Engineer, Miso Robotics</h2>
+        <h2>Senior Software Engineer, FieldAI</h2>
       </div>
       <div>
-        <p>I work at the boundary between mechanical, electrical, firmware, and software: the layer where most of the interesting failures actually happen. I write the requirements and interface contracts that let cross-functional teams build the same system without building against each other, then run the verification and validation that proves it works.</p>
-        <p>Before Miso, I built the autonomy stack for an electric scooter at the University of Maryland and a multi-domain surveillance robot for DRDO. Outside of work, I still read failure-mode analyses for fun.</p>
+        <p>I build the release engineering and test infrastructure function: the pipelines, gates, and automated test suites that decide whether a build is safe to ship. It's the layer where most of the interesting failures get caught before they reach the field.</p>
+        <p>Before FieldAI, I spent ~5 years at Miso Robotics doing systems engineering for Flippy 3: requirements, interfaces, functional safety, and verification &amp; validation. Before that, the autonomy stack for an electric scooter at the University of Maryland and a multi-domain surveillance robot for DRDO. Outside of work, I still read failure-mode analyses for fun.</p>
       </div>
     </div>
   </section>
@@ -487,6 +544,12 @@
         <p class="pub-desc">Nominated by the Indian Defense Research Organization as part of the Unmanned System Exposition for designing a surveillance robot in the first round, advancing to the defense lab round. Other inventors credited.</p>
       </div>
       <div class="pub-item">
+        <p class="pub-title">NSF I-Corps&trade; National Team Badge</p>
+        <p class="pub-meta"><strong>National Science Foundation</strong> &middot; Sep 1, 2026</p>
+        <p class="pub-desc">Awarded on completion of the NSF I-Corps National Team program for customer discovery and venture formation work on the autonomous e-scooter project at the University of Maryland.</p>
+        <a class="pub-link" href="https://www.credly.com/badges/66e76f48-6d0d-4e16-86f7-bd21626abfec/linked_in_profile" target="_blank" rel="noopener">Show badge &rarr;</a>
+      </div>
+      <div class="pub-item">
         <p class="pub-title">Automated Food Frying System</p>
         <p class="pub-meta"><strong>US20260096690A1</strong></p>
         <p class="pub-desc">An automated food frying system with an enclosure defining a robotic workspace, a robotic arm, and functional stations for dispensing raw food to a bin, transferring it to a fry basket, frying it, and transferring cooked food to a receiving pan. Optionally includes an auto-drawer station to move a fry basket between operator and robotic arm without either penetrating the enclosure.</p>
@@ -495,10 +558,49 @@
     </div>
   </section>
 
+  <section class="recs-section wrap">
+    <h2>Recommendations</h2>
+    <div class="recs-grid">
+      <div class="rec-card">
+        <div class="rec-body">
+          <p class="rec-quote rec-lead">I had the privilege of working with Pruthvi Sanghavi at Miso Robotics for over three years, during which I promoted him twice and ultimately had him reporting directly to me. Throughout that time, he consistently distinguished himself as one of the strongest engineers and technical leaders I have worked with in my career.</p>
+          <details class="rec-more">
+            <summary></summary>
+            <div class="rec-rest">
+              <p class="rec-quote">What sets Pruthvi apart is his rare combination of deep technical expertise, systems thinking, and leadership. He has an exceptional ability to operate at every level of a complex robotics organization, from defining high-level engineering strategy and driving executive decision-making to solving highly technical challenges involving robotics, software, hardware integration, machine learning, and functional safety.</p>
+              <p class="rec-quote">Over the years, Pruthvi played a pivotal role in the development and commercialization of the Flippy 3 robotic platform. As Lead Systems Engineer, he successfully guided the program through EVT, DVT, and PVT phases, coordinating cross-functional teams across mechanical, electrical, firmware, and software disciplines to bring a highly sophisticated robotic product from prototype to production. His ability to align teams, manage risk, and drive execution was instrumental to the success of the program.</p>
+              <p class="rec-quote">Beyond program execution, he demonstrated exceptional technical rigor in systems engineering. He established requirements management processes, authored critical interface definitions, maintained verification traceability across complex subsystems, and developed automated validation frameworks that significantly accelerated testing while improving product quality. His work consistently raised the engineering bar for the entire organization.</p>
+              <p class="rec-quote">One of the qualities I admire most is his relentless focus on solving real customer problems. He regularly analyzed field performance data, identified root causes of operational issues, and drove corrective actions that measurably improved fleet reliability, customer satisfaction, and overall system performance. Whether operating in the lab, reviewing architecture, analyzing production data, or coordinating cross-functional teams, he continually demonstrated ownership and accountability well beyond the scope of his role.</p>
+              <p class="rec-quote">As he progressed into leadership positions, he became a trusted technical go to person. He was effective communicating and collaborating with engineering teams, and mentoring fellow engineers.</p>
+              <p class="rec-quote">Simply put, he is the type of engineer every technology company hopes to hire: intellectually curious, technically exceptional, highly dependable, and deeply committed to team success. His contributions had a lasting impact on Miso Robotics, and I have no doubt he will continue to excel and lead wherever his career takes him. I recommend him without reservation and would welcome the opportunity to work with him again in the future.</p>
+            </div>
+          </details>
+        </div>
+        <p class="rec-who">Bachir Kharraja</p>
+        <p class="rec-role">CTO, Miso Robotics &middot; managed Pruthvi directly</p>
+      </div>
+      <div class="rec-card">
+        <div class="rec-body">
+          <p class="rec-quote rec-lead">I had the opportunity to work closely with Pruthvi at Miso Robotics, where he was a key engineering partner in supporting our Flippy fleet for many years.</p>
+          <details class="rec-more">
+            <summary></summary>
+            <div class="rec-rest">
+              <p class="rec-quote">What I appreciated most about Pruthvi was his willingness to jump into real-world problems and help the Operations team find solutions. He brought a strong systems perspective to troubleshooting complex issues in the field and was someone we could rely on when problems crossed the boundaries between hardware, software, and operations.</p>
+              <p class="rec-quote">Pruthvi also looked for ways to make support smarter and more scalable. He built AI tools to help our teams troubleshoot and support the fleet more effectively, applying new technology to very practical operational challenges.</p>
+              <p class="rec-quote">He's a talented engineer, a thoughtful problem solver, and a great cross-functional partner. I'm grateful for the years we worked together and would gladly recommend Pruthvi to any team looking for someone who can combine strong technical depth with an understanding of how robotics systems actually perform in the real world.</p>
+            </div>
+          </details>
+        </div>
+        <p class="rec-who">Maira Rodriguez</p>
+        <p class="rec-role">Director of Operations, Miso Robotics &middot; senior to Pruthvi</p>
+      </div>
+    </div>
+  </section>
+
   <section class="wrap" style="padding-bottom:60px;">
     <div class="now-row">
       <span class="now-dot"></span>
-      <p><strong>Right now:</strong> building the systems engineering function at Miso Robotics from the ground up: requirements management, V&amp;V planning, and release readiness for a commercially deployed robot.</p>
+      <p><strong>Right now:</strong> building the release engineering function at FieldAI from the ground up: release pipelines, CI/CD, and test infrastructure.</p>
     </div>
   </section>
 </main>
@@ -512,7 +614,7 @@
       <a href="works.html">Works</a>
       <a href="ideas.html">Tinkerings</a>
     </div>
-    <div class="foot-note">Pasadena, CA · rev 2026.07</div>
+    <div class="foot-note">rev 2026.10</div>
   </div>
 </footer>
 
